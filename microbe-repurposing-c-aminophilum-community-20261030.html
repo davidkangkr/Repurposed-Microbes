@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>용도변경된 미생물 · 클로스트리디움 아미노필룸</title>
+<meta name="description" content="꿈많은사람2의 '용도변경된 약' 개념을 '용도변경된 미생물'로 확장하는 가설과, 그 가설에 가능성을 보여준 2026년 논문 쉬운 해설">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBF7EF; --paper2:#F4EDE0; --card:#FFFDF8;
+  --ink:#2A2924; --ink2:#5A564C; --line:#E2D8C6;
+  --green:#2F7A55; --green-soft:#E3F0E7;
+  --amber:#B8761A; --amber-soft:#FBEFD9;
+  --clay:#B5532E; --clay-soft:#F7E3DA;
+  --blue:#3F6488; --blue-soft:#E3EBF3;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans KR",system-ui,sans-serif;font-size:19px;line-height:1.85;word-break:keep-all;overflow-wrap:break-word}
+.wrap{max-width:760px;margin:0 auto;padding:0 18px}
+h1,h2,h3{font-family:"Noto Serif KR",serif;line-height:1.4;margin:0}
+h2{font-size:1.55rem;margin-bottom:.4em}
+h3{font-size:1.2rem;margin:1.4em 0 .4em}
+p{margin:.7em 0}
+strong{font-weight:700}
+a{color:var(--blue)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:6px}
+
+/* hero */
+.hero{background:linear-gradient(180deg,var(--paper2),var(--paper));border-bottom:1px solid var(--line);padding:56px 0 44px}
+.kicker{display:inline-block;font-size:.85rem;font-weight:700;color:var(--green);background:var(--green-soft);padding:4px 12px;border-radius:99px;letter-spacing:.02em}
+.hero h1{font-size:2.05rem;font-weight:900;margin:.55em 0 .35em}
+.hero h1 .from{color:var(--blue)}
+.hero h1 .to{color:var(--green)}
+.hero .lead{font-size:1.1rem;color:var(--ink2)}
+.byline{font-size:.88rem;color:var(--ink2);margin-top:1.4em}
+
+/* sections */
+section{padding:46px 0;border-bottom:1px solid var(--line)}
+.secno{font-family:"Noto Serif KR",serif;font-size:.95rem;font-weight:700;color:var(--clay);display:block;margin-bottom:.2em}
+.quote{border-left:5px solid var(--green);background:var(--card);padding:16px 20px;border-radius:0 12px 12px 0;font-family:"Noto Serif KR",serif;font-size:1.12rem;margin:1.2em 0}
+.quote small{display:block;font-family:"Noto Sans KR",sans-serif;font-size:.85rem;color:var(--ink2);margin-top:.4em}
+.figure{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 14px 12px;margin:1.4em 0}
+.figure svg{display:block;width:100%;height:auto;margin:0 auto}
+.figcap{font-size:.88rem;color:var(--ink2);line-height:1.6;margin:.6em 4px 0}
+.note-approx{font-size:.8rem;color:var(--ink2)}
+
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:.88rem;margin:.4em 4px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:14px;height:14px;border-radius:4px;display:inline-block}
+
+/* garden cards */
+.garden{display:grid;gap:14px;margin:1.2em 0}
+.gcard{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
+.gcard svg{flex:0 0 58px;width:58px;height:58px}
+.gcard h4{margin:0;font-family:"Noto Serif KR",serif;font-size:1.12rem}
+.gcard p{margin:.25em 0 0;font-size:1rem;line-height:1.7}
+.tag{display:inline-block;font-size:.78rem;font-weight:700;padding:2px 10px;border-radius:99px;margin-top:.5em}
+.tag.done{background:var(--green-soft);color:var(--green)}
+.tag.next{background:var(--amber-soft);color:var(--amber)}
+
+/* summary box */
+.summary{background:var(--green-soft);border-radius:16px;padding:20px 22px;margin:1.2em 0}
+.summary p{margin:.3em 0}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:1.2em 0}
+.fact{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.fact b{display:block;font-family:"Noto Serif KR",serif;font-size:1.5rem;color:var(--clay);line-height:1.3}
+.fact span{font-size:.88rem;color:var(--ink2);line-height:1.5;display:block}
+
+.term{background:var(--paper2);border-radius:4px;padding:0 2px}
+
+/* AI note */
+.ainote{background:var(--amber-soft);border:2px dashed var(--amber);border-radius:16px;padding:18px 20px;margin:1.6em 0}
+.ainote .label{display:inline-block;font-size:.82rem;font-weight:700;color:#fff;background:var(--amber);padding:3px 12px;border-radius:99px;margin-bottom:.5em}
+.ainote ul{margin:.4em 0;padding-left:1.2em}
+.ainote li{margin:.45em 0;font-size:1rem}
+
+/* hope list */
+.hope{counter-reset:h;list-style:none;padding:0;margin:1em 0}
+.hope li{counter-increment:h;position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 16px 16px 62px;margin:12px 0}
+.hope li::before{content:counter(h);position:absolute;left:16px;top:16px;width:32px;height:32px;border-radius:50%;background:var(--green);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:"Noto Serif KR",serif}
+.hope b{font-family:"Noto Serif KR",serif}
+
+/* prompts */
+.prompt{position:relative;background:var(--card);border:2px solid var(--blue-soft);border-radius:16px;padding:18px 18px 56px;margin:14px 0}
+.prompt::before{content:"“";position:absolute;top:-6px;left:12px;font-family:"Noto Serif KR",serif;font-size:3rem;color:var(--blue);line-height:1}
+.prompt p{margin:.6em 0 0;font-size:1.02rem}
+.prompt .when{font-size:.85rem;color:var(--blue);font-weight:700;margin:0}
+.copy{position:absolute;right:14px;bottom:12px;font:inherit;font-size:.88rem;font-weight:700;color:var(--blue);background:var(--blue-soft);border:0;border-radius:99px;padding:6px 16px;cursor:pointer;min-height:36px}
+.copy.ok{background:var(--green);color:#fff}
+
+.steps{list-style:none;padding:0;margin:1em 0}
+.steps li{background:var(--green-soft);border-radius:14px;padding:14px 18px;margin:10px 0}
+.steps li b{color:var(--green);font-family:"Noto Serif KR",serif}
+
+.closing{text-align:center;padding:52px 0}
+.closing p{font-family:"Noto Serif KR",serif;font-size:1.25rem;line-height:1.75}
+
+.refs{font-size:.92rem;line-height:1.65}
+.refs h3{font-size:1.05rem}
+.refs ol{padding-left:1.2em}
+.refs li{margin:.7em 0}
+.refs .ttl{font-weight:700}
+footer{font-size:.82rem;color:var(--ink2);padding:24px 0 48px;text-align:center}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+.no-io .reveal{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1!important;transform:none!important;transition:none!important}
+}
+@media (max-width:520px){
+  body{font-size:18px}
+  .hero h1{font-size:1.7rem}
+  h2{font-size:1.38rem}
+  .hope li{padding-left:56px}
+}
+@media print{
+  body{background:#fff;font-size:12pt}
+  .hero{background:#fff}
+  .reveal{opacity:1!important;transform:none!important}
+  .copy{display:none}
+  section,.figure,.gcard,.prompt{break-inside:avoid}
+  a{color:var(--ink)}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="kicker">가설 노트 · 장내미생물</span>
+    <h1><span class="from">용도변경된 약</span>에서<br><span class="to">용도변경된 미생물</span>로</h1>
+    <p class="lead">우리 몸에 이미 사는 미생물 중에도, 암과 싸우는 데 새롭게 쓰일 수 있는 것이 있지 않을까요? 그 질문에 <strong>가능성의 문</strong>을 조금 열어 준 2026년 논문을 쉽게 풀어 봅니다.</p>
+    <p class="byline">글·가설: 꿈많은사람2 · 정리: AI 클로드 · 2026년 10월 30일</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ============ 1. 가설 ============ -->
+<section id="hypothesis">
+  <span class="secno">첫째 이야기</span>
+  <h2>나의 가설: "용도변경된 미생물"</h2>
+
+  <p>2020년 말부터 <strong>용도변경된 약</strong>들을 지켜보며 많은 가능성을 보았습니다. 당뇨약, 구충제, 고지혈증약처럼 원래 다른 병을 위해 만들어진 약이 암에서도 새로운 역할을 할 수 있다는 생각입니다.</p>
+  <p>그러다 <strong>장내미생물</strong>, 그리고 <strong>종양 안에 사는 미생물</strong>에도 눈이 갔습니다. 그리고 같은 생각을 미생물에도 적용해 보았습니다.</p>
+
+  <div class="quote reveal">
+    "이미 있는 약의 용도를 바꾸듯, <br>이미 있는 미생물의 용도도 바꿀 수 있지 않을까?"
+    <small>— 꿈많은사람2의 질문</small>
+  </div>
+
+  <p>만약 <strong>특정 암에 특정 미생물이 도움이 된다</strong>는 사실이 밝혀진다면, 우리는 내 암종에 맞게 그 미생물을 <strong>먹고(섭취), 키우고(성장), 또는 줄이는(제거)</strong> 방법으로 직접 활용해 볼 수 있습니다. 아래 그림은 두 생각이 얼마나 같은 모양인지 보여 줍니다.</p>
+
+  <div class="figure reveal">
+    <svg viewBox="0 0 360 600" role="img" aria-labelledby="f1t f1d">
+      <title id="f1t">용도변경된 약과 용도변경된 미생물의 비교 흐름도</title>
+      <desc id="f1d">왼쪽은 약, 오른쪽은 미생물. 이미 있는 것에서 시작해 새 효과를 발견하고, 내 암종에 맞는지 찾고, 활용하는 네 단계가 똑같이 이어진다.</desc>
+      <defs>
+        <marker id="ar" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#8A8273"/></marker>
+      </defs>
+      <!-- headers -->
+      <rect x="6" y="6" width="164" height="40" rx="20" fill="#3F6488"/>
+      <text x="88" y="32" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">용도변경된 약</text>
+      <rect x="190" y="6" width="164" height="40" rx="20" fill="#2F7A55"/>
+      <text x="272" y="32" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">용도변경된 미생물</text>
+
+      <!-- row labels -->
+      <g font-size="12" fill="#8A8273" text-anchor="middle">
+        <text x="180" y="96">①</text><text x="180" y="210">②</text><text x="180" y="324">③</text><text x="180" y="438">④</text>
+      </g>
+
+      <!-- drug column -->
+      <g font-size="13.5" fill="#2A2924" text-anchor="middle">
+        <rect x="6" y="62" width="164" height="78" rx="12" fill="#E3EBF3" stroke="#3F6488"/>
+        <text x="88" y="92" font-weight="700">이미 있는 약</text>
+        <text x="88" y="114" font-size="12" fill="#5A564C">예: 메트포르민(Metformin)</text>
+        <text x="88" y="130" font-size="11" fill="#5A564C">당뇨약 · 예시일 뿐</text>
+
+        <rect x="6" y="176" width="164" height="78" rx="12" fill="#E3EBF3" stroke="#3F6488"/>
+        <text x="88" y="206" font-weight="700">새 효과 발견</text>
+        <text x="88" y="228" font-size="12" fill="#5A564C">암세포의 에너지 대사를</text>
+        <text x="88" y="244" font-size="12" fill="#5A564C">건드린다는 연구들</text>
+
+        <rect x="6" y="290" width="164" height="78" rx="12" fill="#E3EBF3" stroke="#3F6488"/>
+        <text x="88" y="320" font-weight="700">내 암종에 맞추기</text>
+        <text x="88" y="342" font-size="12" fill="#5A564C">어떤 암, 어떤 상황에서</text>
+        <text x="88" y="358" font-size="12" fill="#5A564C">근거가 있는가?</text>
+
+        <rect x="6" y="404" width="164" height="78" rx="12" fill="#E3EBF3" stroke="#3F6488"/>
+        <text x="88" y="434" font-weight="700">활용</text>
+        <text x="88" y="458" font-size="12.5" fill="#5A564C">복용</text>
+      </g>
+      <g stroke="#8A8273" stroke-width="2" marker-end="url(#ar)">
+        <line x1="88" y1="141" x2="88" y2="172"/><line x1="88" y1="255" x2="88" y2="286"/><line x1="88" y1="369" x2="88" y2="400"/>
+      </g>
+
+      <!-- microbe column -->
+      <g font-size="13.5" fill="#2A2924" text-anchor="middle">
+        <rect x="190" y="62" width="164" height="78" rx="12" fill="#FFFDF8" stroke="#2F7A55"/>
+        <text x="272" y="92" font-weight="700">이미 사는 미생물</text>
+        <text x="272" y="114" font-size="12" fill="#5A564C">내 장 속에 사는</text>
+        <text x="272" y="130" font-size="12" fill="#5A564C">수천 종의 균</text>
+
+        <rect x="190" y="176" width="164" height="78" rx="12" fill="#2F7A55"/>
+        <text x="272" y="204" font-weight="700" fill="#fff">특정 암과의 관계 발견</text>
+        <text x="272" y="226" font-size="12" fill="#E3F0E7">★ 오늘 논문이 채운 칸</text>
+        <text x="272" y="243" font-size="11.5" fill="#E3F0E7">폐암 환자에게서 줄어든 균</text>
+
+        <rect x="190" y="290" width="164" height="78" rx="12" fill="#FFFDF8" stroke="#2F7A55"/>
+        <text x="272" y="320" font-weight="700">내 암종에 맞추기</text>
+        <text x="272" y="342" font-size="12" fill="#5A564C">내 암에서 줄어든 균?</text>
+        <text x="272" y="358" font-size="12" fill="#5A564C">늘어난 균?</text>
+
+        <rect x="190" y="404" width="164" height="78" rx="12" fill="#FFFDF8" stroke="#2F7A55"/>
+        <text x="272" y="432" font-weight="700">활용</text>
+        <text x="272" y="454" font-size="12.5" fill="#5A564C">심기(섭취) · 거름(성장)</text>
+        <text x="272" y="472" font-size="12.5" fill="#5A564C">잡초 뽑기(제거)</text>
+      </g>
+      <g stroke="#8A8273" stroke-width="2" marker-end="url(#ar)">
+        <line x1="272" y1="141" x2="272" y2="172"/><line x1="272" y1="255" x2="272" y2="286"/><line x1="272" y1="369" x2="272" y2="400"/>
+      </g>
+
+      <!-- same-principle dashes -->
+      <g stroke="#C9BFAE" stroke-width="1.5" stroke-dasharray="3 4">
+        <line x1="170" y1="101" x2="190" y2="101"/><line x1="170" y1="215" x2="190" y2="215"/><line x1="170" y1="329" x2="190" y2="329"/><line x1="170" y1="443" x2="190" y2="443"/>
+      </g>
+
+      <!-- converge -->
+      <path d="M88 483 L88 512 L172 532" fill="none" stroke="#8A8273" stroke-width="2"/>
+      <path d="M272 483 L272 512 L188 532" fill="none" stroke="#8A8273" stroke-width="2" marker-end="url(#ar)"/>
+      <rect x="40" y="536" width="280" height="56" rx="28" fill="#B5532E"/>
+      <text x="180" y="560" text-anchor="middle" font-size="14.5" font-weight="700" fill="#fff">같은 원리, 더 넓어진 선택지</text>
+      <text x="180" y="580" text-anchor="middle" font-size="12" fill="#F7E3DA">원리를 알고 → 가능성을 보고 → 근거 위에서 시도</text>
+    </svg>
+    <p class="figcap">그림 1. 왼쪽과 오른쪽은 같은 계단을 밟습니다. 오늘 논문은 오른쪽 ②번 칸, 즉 "특정 암과 관계있는 미생물을 찾는 일"을 실제로 해냈습니다. 메트포르민은 개념을 보여 주기 위한 <strong>예시</strong>입니다.</p>
+  </div>
+
+  <h3>우리 몸속 정원에서 할 수 있는 세 가지 일</h3>
+  <p>장(腸)을 하나의 <strong>정원</strong>이라고 생각해 보세요. 그 안의 미생물은 정원에 자라는 식물입니다. 가설의 세 가지 행동은 정원 일로 바꾸면 이렇게 됩니다.</p>
+
+  <div class="garden">
+    <div class="gcard reveal">
+      <svg viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="29" fill="#E3F0E7"/><path d="M30 44 V26" stroke="#2F7A55" stroke-width="3" stroke-linecap="round"/><path d="M30 30 C22 30 19 23 19 19 C26 19 30 23 30 30Z" fill="#2F7A55"/><path d="M30 27 C37 27 41 21 41 16 C34 16 30 20 30 27Z" fill="#5BA37C"/><ellipse cx="30" cy="46" rx="11" ry="3.5" fill="#B5532E" opacity=".5"/></svg>
+      <div>
+        <h4>씨앗 심기 = 섭취</h4>
+        <p>부족한 좋은 균을 밖에서 넣어 주는 일입니다. 유산균(프로바이오틱스, probiotics)이 대표적입니다.</p>
+        <span class="tag done">오늘 논문: 쥐 실험에서 실제로 시도됨</span>
+      </div>
+    </div>
+    <div class="gcard reveal">
+      <svg viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="29" fill="#FBEFD9"/><path d="M16 34 h20 v10 a3 3 0 0 1 -3 3 h-14 a3 3 0 0 1 -3 -3z" fill="#B8761A"/><path d="M36 37 L46 29" stroke="#B8761A" stroke-width="3.5" stroke-linecap="round"/><path d="M20 34 C20 26 32 26 32 34" fill="none" stroke="#B8761A" stroke-width="3"/><g fill="#3F6488"><circle cx="48" cy="34" r="1.8"/><circle cx="46" cy="39" r="1.8"/><circle cx="51" cy="38" r="1.8"/></g></svg>
+      <div>
+        <h4>거름 주기 = 성장</h4>
+        <p>이미 내 장에 있는 좋은 균이 잘 자라도록 먹이(프리바이오틱스, prebiotics)나 환경을 바꿔 주는 일입니다.</p>
+        <span class="tag next">다음에 찾아볼 질문</span>
+      </div>
+    </div>
+    <div class="gcard reveal">
+      <svg viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="29" fill="#F7E3DA"/><path d="M26 46 V30 M26 34 C20 33 17 28 17 24 M26 32 C31 30 33 25 33 21" stroke="#8A6A3A" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M33 14 C40 14 44 18 44 24 L38 28 C36 24 33 22 30 22Z" fill="#B5532E"/><path d="M22 47 C24 51 28 51 30 47" stroke="#8A6A3A" stroke-width="2" fill="none"/></svg>
+      <div>
+        <h4>잡초 뽑기 = 제거</h4>
+        <p>암과 관련해 늘어난 나쁜 균을 줄이는 일입니다. 오늘 논문에서도 환자 쪽에서 늘어난 균들이 함께 발견되었습니다.</p>
+        <span class="tag next">다음에 찾아볼 질문</span>
+      </div>
+    </div>
+  </div>
+
+  <h3>가능성의 계단: 오늘 논문은 어디까지 올라왔나</h3>
+  <p>새로운 가능성은 보통 아래에서 위로 한 계단씩 올라갑니다. 오늘 논문은 <strong>세 계단</strong>을 한 번에 올랐습니다.</p>
+
+  <div class="figure reveal">
+    <svg viewBox="0 0 360 330" role="img" aria-labelledby="f2t">
+      <title id="f2t">가능성의 계단. 사람 관찰, 세포 실험, 동물 실험까지 확인되었고 사람 시험은 다음 단계이다.</title>
+      <g font-size="14">
+        <!-- step 1 -->
+        <rect x="10" y="250" width="200" height="70" rx="10" fill="#2F7A55"/>
+        <text x="24" y="278" fill="#fff" font-weight="700">① 사람에게서 관찰</text>
+        <text x="24" y="302" fill="#E3F0E7" font-size="12.5">환자 대변 vs 건강인 대변</text>
+        <!-- step 2 -->
+        <rect x="60" y="170" width="200" height="70" rx="10" fill="#2F7A55"/>
+        <text x="74" y="198" fill="#fff" font-weight="700">② 세포 실험</text>
+        <text x="74" y="222" fill="#E3F0E7" font-size="12.5">폐암세포 성장·이동 감소</text>
+        <!-- step 3 -->
+        <rect x="110" y="90" width="200" height="70" rx="10" fill="#2F7A55"/>
+        <text x="124" y="118" fill="#fff" font-weight="700">③ 동물 실험</text>
+        <text x="124" y="142" fill="#E3F0E7" font-size="12.5">먹인 쥐에서 종양 성장 둔화</text>
+        <!-- step 4 -->
+        <rect x="150" y="10" width="200" height="70" rx="10" fill="#FBEFD9" stroke="#B8761A" stroke-width="2" stroke-dasharray="6 5"/>
+        <text x="164" y="38" fill="#B8761A" font-weight="700">④ 사람 시험</text>
+        <text x="164" y="62" fill="#8A5A12" font-size="12.5">다음 계단 · 아직 비어 있음</text>
+      </g>
+      <g fill="#2F7A55" font-size="20" font-weight="700">
+        <text x="222" y="295">✓</text><text x="272" y="215">✓</text><text x="322" y="135">✓</text>
+      </g>
+    </svg>
+    <div class="legend"><span><i style="background:#2F7A55"></i>오늘 논문이 올라선 계단</span><span><i style="background:#FBEFD9;border:2px dashed #B8761A"></i>앞으로 채워질 계단</span></div>
+  </div>
+</section>
+
+<!-- ============ 2. 논문 한눈에 ============ -->
+<section id="paper">
+  <span class="secno">둘째 이야기</span>
+  <h2>오늘의 논문 한눈에</h2>
+  <div class="summary reveal">
+    <p><strong>제목:</strong> 장내 클로스트리디움 아미노필룸(<em>Clostridium aminophilum</em>): 비흡연자 폐암의 보호 미생물</p>
+    <p><strong>학술지:</strong> Microbiology Spectrum (미국미생물학회) · 2026년 10월 26일 발표</p>
+    <p><strong>연구팀:</strong> 중국 저장성 사오싱 인민병원 흉부외과 외</p>
+  </div>
+  <p>담배를 한 번도 피운 적 없는데 폐암에 걸린 분들이 있습니다. 전체 폐암의 약 <strong>4분의 1</strong>이 이런 경우이고, 그중 <strong>65~70%가 여성</strong>입니다. 담배라는 가장 큰 원인이 없으니, 연구진은 "그렇다면 <strong>장 속 미생물</strong>이 뭔가 관계가 있지 않을까?"라고 물었습니다.</p>
+  <div class="facts">
+    <div class="fact reveal"><b>24명</b><span>담배를 안 피운 초기 폐암 환자 (치료 시작 전)</span></div>
+    <div class="fact reveal"><b>18명</b><span>담배를 안 피운 건강한 사람 (나이 비슷)</span></div>
+    <div class="fact reveal"><b>1종</b><span>최종적으로 찾아낸 "좋은 균"</span></div>
+  </div>
+  <p>결론을 먼저 말하면 이렇습니다. <strong>폐암 환자의 장에는 '클로스트리디움 아미노필룸'이라는 균이 건강인보다 눈에 띄게 적었습니다.</strong> 그리고 이 균을 실험실에서 써 보았더니 폐암세포와 쥐의 종양이 덜 자랐습니다.</p>
+</section>
+
+<!-- ============ 3. 어떻게 찾았나 ============ -->
+<section id="method">
+  <span class="secno">셋째 이야기</span>
+  <h2>1만 2천 종 중에서 단 하나를 찾기까지</h2>
+  <p>연구진은 대변 속 미생물의 유전자를 통째로 읽는 방법(<span class="term">메타게놈 분석, metagenomics</span>)을 썼습니다. 그리고 체로 거르듯 단계마다 후보를 줄여 나갔습니다.</p>
+
+  <div class="figure reveal">
+    <svg viewBox="0 0 360 400" role="img" aria-labelledby="f3t">
+      <title id="f3t">깔때기 그림: 12,220종에서 317종, 29종, 7종을 거쳐 1종으로 좁혀짐</title>
+      <g text-anchor="middle">
+        <path d="M10 10 H350 L322 78 H38 Z" fill="#E3EBF3"/>
+        <text x="180" y="40" font-size="20" font-weight="700" fill="#3F6488">12,220종</text>
+        <text x="180" y="63" font-size="12.5" fill="#2A2924">대변에서 발견된 전체 미생물</text>
+
+        <path d="M42 86 H318 L290 154 H70 Z" fill="#D3E0EC"/>
+        <text x="180" y="116" font-size="19" font-weight="700" fill="#3F6488">317종</text>
+        <text x="180" y="139" font-size="12.5" fill="#2A2924">환자와 건강인 사이에 양이 다른 균</text>
+
+        <path d="M74 162 H286 L258 230 H102 Z" fill="#FBEFD9"/>
+        <text x="180" y="192" font-size="19" font-weight="700" fill="#B8761A">29종</text>
+        <text x="180" y="215" font-size="12.5" fill="#2A2924">함께 움직이는 균 무리와 겹치는 것</text>
+
+        <path d="M106 238 H254 L226 306 H134 Z" fill="#F7E3DA"/>
+        <text x="180" y="268" font-size="19" font-weight="700" fill="#B5532E">7종</text>
+        <text x="180" y="291" font-size="12" fill="#2A2924">AI 모델이 고른 핵심 균</text>
+
+        <circle cx="180" cy="350" r="46" fill="#2F7A55"/>
+        <text x="180" y="347" font-size="20" font-weight="700" fill="#fff">1종</text>
+        <text x="180" y="368" font-size="9.5" font-style="italic" fill="#E3F0E7">C. aminophilum</text>
+      </g>
+    </svg>
+    <p class="figcap">그림 2. 전체 미생물에서 시작해 차이 분석 → 균 무리 분석(<span class="term">WGCNA</span>) → 기계학습(머신러닝) 모델 순서로 좁혀 들어갔습니다.</p>
+  </div>
+
+  <h3>AI는 어떻게 "1등 균"을 골랐을까</h3>
+  <p>연구진은 29종의 균 정보만 가지고 "이 사람이 폐암 환자인가, 건강인인가"를 맞히는 컴퓨터 모델을 <strong>113가지 방식</strong>으로 만들어 겨루게 했습니다. 가장 잘 맞힌 모델은 시험 성적으로 치면 <strong>100점 만점에 약 85점</strong>(<span class="term">AUC 0.855</span>) 정도였습니다.</p>
+  <p>그다음 "이 모델이 판단할 때 <strong>어떤 균을 가장 중요하게 봤나</strong>"를 따져 보는 방법(<span class="term">SHAP 분석</span>)을 썼습니다. 1등은 <strong>클로스트리디움 아미노필룸</strong>이었습니다. 이 균 하나만 가지고도 약 74점(<span class="term">AUC 0.743</span>)을 받았습니다.</p>
+
+  <div class="figure reveal">
+    <svg viewBox="0 0 360 290" role="img" aria-labelledby="f4t">
+      <title id="f4t">막대그래프: 건강인보다 폐암 환자에서 클로스트리디움 아미노필룸이 적음. 두 개의 연구에서 같은 방향.</title>
+      <line x1="40" y1="230" x2="350" y2="230" stroke="#C9BFAE"/>
+      <g font-size="12.5" text-anchor="middle" fill="#2A2924">
+        <text x="105" y="22" font-weight="700">오늘 논문 (중국)</text>
+        <text x="270" y="22" font-weight="700">다른 연구 (Song 등)</text>
+      </g>
+      <!-- this cohort: approx 8.9 vs 4.8, scale 20/unit -->
+      <rect x="62" y="52" width="38" height="178" rx="6" fill="#2F7A55"/>
+      <rect x="112" y="134" width="38" height="96" rx="6" fill="#B5532E"/>
+      <!-- Song: approx 4.5 vs 1.5 -->
+      <rect x="227" y="140" width="38" height="90" rx="6" fill="#2F7A55"/>
+      <rect x="277" y="200" width="38" height="30" rx="6" fill="#B5532E"/>
+      <g font-size="12" text-anchor="middle" fill="#2A2924">
+        <text x="81" y="250">건강인</text><text x="131" y="250">환자</text>
+        <text x="246" y="250">건강인</text><text x="296" y="250">환자</text>
+      </g>
+      <g font-size="12.5" font-weight="700" text-anchor="middle">
+        <text x="105" y="44" fill="#B5532E">약 절반으로 ↓</text>
+        <text x="270" y="130" fill="#B5532E">크게 ↓</text>
+      </g>
+      <text x="180" y="278" font-size="11" text-anchor="middle" fill="#8A8273">세로: 균의 상대적인 양 · 그림에서 읽은 대략값</text>
+    </svg>
+    <div class="legend"><span><i style="background:#2F7A55"></i>건강인</span><span><i style="background:#B5532E"></i>폐암 환자</span></div>
+    <p class="figcap">그림 3. 다른 연구팀이 앞서 발표한 자료(건강인 29명, 비소세포폐암 NSCLC 환자 27명)에서도 이 균이 환자 쪽에서 적었습니다. 서로 다른 두 집단에서 <strong>같은 방향</strong>이 나왔다는 점이 중요합니다.</p>
+  </div>
+
+  <h3>장 속 풍경은 어떻게 달랐나</h3>
+  <p>폐암 환자의 장은 미생물의 <strong>종류 수(풍부함)</strong>가 조금 적었습니다. 좋은 균으로 알려진 무리(라크노스피라과, Lachnospiraceae)는 줄고, 장내세균과(Enterobacteriaceae) 같은 무리는 늘어 있었습니다. 또 균들이 가진 기능을 보니, 염증을 일으킬 수 있는 물질(<span class="term">지질다당류, LPS</span>)을 만드는 능력은 늘고, 지방산을 만드는 능력은 줄어 있었습니다.</p>
+</section>
+
+<!-- ============ 4. 실험 ============ -->
+<section id="lab">
+  <span class="secno">넷째 이야기</span>
+  <h2>실험실에서 확인한 것</h2>
+
+  <h3>① 세포 실험: 균이 만든 "국물"만으로도</h3>
+  <p>연구진은 이 균을 키운 뒤 균은 걸러 내고 <strong>균이 만들어 낸 물질이 녹아 있는 배양액</strong>만 모았습니다. 이것을 두 종류의 폐암세포(A549, PC9)에 넣었더니 다음과 같은 일이 일어났습니다.</p>
+  <ul>
+    <li>폐암세포가 <strong>덜 자랐습니다</strong>. 활발히 분열하는 세포 비율이 52%에서 35%로 줄었습니다(A549).</li>
+    <li>세포 덩어리(군집)가 <strong>적게</strong> 만들어졌습니다.</li>
+    <li>세포가 <strong>덜 이동</strong>했습니다. 암이 퍼지는 성질과 관련된 지표입니다.</li>
+  </ul>
+  <p>균 자체가 아니라 <strong>균이 만든 물질</strong>이 효과를 냈다는 점이 흥미롭습니다.</p>
+
+  <h3>② 동물 실험: 살아 있는 균을 먹였더니</h3>
+  <p>폐암세포를 심은 쥐에게 살아 있는 균을 <strong>21일 동안 매일 먹였습니다</strong>. 적게 먹인 그룹, 많이 먹인 그룹, 균 없이 배양액만 먹인 그룹으로 나눴습니다.</p>
+
+  <div class="figure reveal">
+    <svg viewBox="0 0 360 280" role="img" aria-labelledby="f5t">
+      <title id="f5t">선그래프: 21일 동안 종양 크기. 균을 많이 먹인 쥐에서 종양이 가장 덜 자람.</title>
+      <g stroke="#E2D8C6"><line x1="50" y1="220" x2="335" y2="220"/><line x1="50" y1="129" x2="335" y2="129"/><line x1="50" y1="38" x2="335" y2="38"/></g>
+      <g font-size="11" fill="#8A8273" text-anchor="end"><text x="44" y="224">0</text><text x="44" y="133">500</text><text x="44" y="42">1000</text></g>
+      <g font-size="11.5" fill="#5A564C" text-anchor="middle"><text x="50" y="240">0일</text><text x="143" y="240">7일</text><text x="237" y="240">14일</text><text x="330" y="240">21일</text></g>
+      <polyline points="50,220 143,185 237,144 330,38" fill="none" stroke="#8A8273" stroke-width="3"/>
+      <polyline points="50,220 143,193 237,147 330,62" fill="none" stroke="#5BA37C" stroke-width="3"/>
+      <polyline points="50,220 143,195 237,156 330,100" fill="none" stroke="#2F7A55" stroke-width="4"/>
+      <g><circle cx="330" cy="38" r="5" fill="#8A8273"/><circle cx="330" cy="62" r="5" fill="#5BA37C"/><circle cx="330" cy="100" r="6" fill="#2F7A55"/></g>
+      <text x="330" y="205" font-size="12.5" font-weight="700" fill="#2F7A55" text-anchor="end">많이 먹인 쥐: 약 3분의 1 작음</text>
+      <text x="180" y="270" font-size="11" text-anchor="middle" fill="#8A8273">세로: 종양 부피(mm³) · 그림에서 읽은 대략값</text>
+    </svg>
+    <div class="legend"><span><i style="background:#8A8273"></i>균 없음(배양액만)</span><span><i style="background:#5BA37C"></i>균 적게</span><span><i style="background:#2F7A55"></i>균 많이</span></div>
+    <p class="figcap">그림 4. 처음 2주는 차이가 거의 없었습니다. 2주가 지나면서 균을 많이 먹인 쥐의 종양이 뚜렷하게 덜 자랐습니다. 적게 먹인 그룹은 조금 덜 자란 정도였습니다.</p>
+  </div>
+
+  <p>종양을 떼어 현미경으로 봐도 같은 결과였습니다. 균을 많이 먹인 쥐의 종양에서는 <strong>분열 중인 세포가 3분의 1 수준</strong>으로 줄었고, 세포 증식 표지(<span class="term">Ki-67</span>) 양성 세포도 약 85%에서 62%로 줄었습니다. 균을 먹는 동안 쥐들의 체중은 꾸준히 늘었습니다.</p>
+</section>
+
+<!-- ============ 5. 왜 ============ -->
+<section id="why">
+  <span class="secno">다섯째 이야기</span>
+  <h2>왜 효과가 있었을까? (아직은 가설)</h2>
+  <p>이 균은 원래 <strong>소의 위(반추위)</strong>에서 처음 발견되었습니다. 단백질과 아미노산을 분해(발효)하는 것이 특기입니다. 그 과정에서 몇 가지 물질이 나옵니다.</p>
+
+  <div class="figure reveal">
+    <svg viewBox="0 0 360 360" role="img" aria-labelledby="f6t">
+      <title id="f6t">균이 아미노산을 발효해 암모니아와 짧은사슬지방산을 만들고, 이것이 암세포 억제와 장 보호, 면역에 관여할 수 있다는 가설 흐름</title>
+      <defs><marker id="ar2" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#8A8273"/></marker></defs>
+      <g text-anchor="middle">
+        <rect x="80" y="8" width="200" height="56" rx="28" fill="#2F7A55"/>
+        <text x="180" y="32" font-size="14" font-weight="700" fill="#fff">클로스트리디움 아미노필룸</text>
+        <text x="180" y="51" font-size="12" fill="#E3F0E7">단백질·아미노산을 발효</text>
+
+        <line x1="140" y1="66" x2="95" y2="112" stroke="#8A8273" stroke-width="2" marker-end="url(#ar2)"/>
+        <line x1="220" y1="66" x2="265" y2="112" stroke="#8A8273" stroke-width="2" marker-end="url(#ar2)"/>
+
+        <rect x="10" y="116" width="160" height="66" rx="12" fill="#FBEFD9" stroke="#B8761A"/>
+        <text x="90" y="144" font-size="14" font-weight="700" fill="#2A2924">암모니아</text>
+        <text x="90" y="165" font-size="12" fill="#5A564C">(Ammonia)</text>
+
+        <rect x="190" y="116" width="160" height="66" rx="12" fill="#FBEFD9" stroke="#B8761A"/>
+        <text x="270" y="140" font-size="13.5" font-weight="700" fill="#2A2924">아세트산 · 부티르산</text>
+        <text x="270" y="160" font-size="11.5" fill="#5A564C">짧은사슬지방산</text>
+        <text x="270" y="175" font-size="11.5" fill="#5A564C">(SCFA)</text>
+
+        <line x1="90" y1="184" x2="90" y2="226" stroke="#8A8273" stroke-width="2" marker-end="url(#ar2)"/>
+        <line x1="270" y1="184" x2="270" y2="226" stroke="#8A8273" stroke-width="2" marker-end="url(#ar2)"/>
+
+        <rect x="10" y="230" width="160" height="70" rx="12" fill="#FFFDF8" stroke="#C9BFAE"/>
+        <text x="90" y="256" font-size="12.5" fill="#2A2924">암세포 증식을</text>
+        <text x="90" y="275" font-size="12.5" fill="#2A2924">늦출 수 있다는</text>
+        <text x="90" y="292" font-size="11.5" fill="#5A564C">다른 연구들</text>
+
+        <rect x="190" y="230" width="160" height="70" rx="12" fill="#FFFDF8" stroke="#C9BFAE"/>
+        <text x="270" y="254" font-size="12.5" fill="#2A2924">장벽 보호 · 염증 조절</text>
+        <text x="270" y="273" font-size="12.5" fill="#2A2924">항암 면역세포 강화</text>
+        <text x="270" y="292" font-size="11.5" fill="#5A564C">다른 연구들</text>
+
+        <text x="180" y="334" font-size="13" font-weight="700" fill="#B8761A">장 → 혈액 → 폐 : "장–폐 축(gut–lung axis)"</text>
+        <text x="180" y="352" font-size="11.5" fill="#8A8273">점선 상자 = 이번 연구에서 직접 측정하지 않은 부분</text>
+      </g>
+      <rect x="4" y="110" width="352" height="196" rx="16" fill="none" stroke="#B8761A" stroke-width="1.5" stroke-dasharray="6 5"/>
+    </svg>
+    <p class="figcap">그림 5. 연구진이 제시한 가능한 경로입니다. 장에서 만들어진 물질이 혈액을 타고 폐까지 영향을 줄 수 있다는 생각을 "장–폐 축"이라고 부릅니다.</p>
+  </div>
+
+  <p>다만 연구진도 솔직하게 밝혔습니다. <strong>이 물질들의 양을 이번 연구에서 직접 재지는 않았습니다.</strong> 무엇이 진짜 열쇠인지는 다음 연구가 밝혀야 할 숙제입니다.</p>
+</section>
+
+<!-- ============ 6. 희망 ============ -->
+<section id="hope">
+  <span class="secno">여섯째 이야기</span>
+  <h2>이 논문이 가설에 주는 희망</h2>
+  <ol class="hope">
+    <li class="reveal"><b>"이미 있는 것에서 새 용도를 찾았다"</b><br>이 균은 원래 소의 위에서 단백질을 분해하는 평범한 균으로만 알려져 있었습니다. 그런데 사람의 폐암과 연결되는 새로운 얼굴이 드러났습니다. <strong>용도변경</strong>이라는 생각이 미생물에서도 그대로 작동한 셈입니다.</li>
+    <li class="reveal"><b>"먹여서 효과를 본 길이 처음 보였다"</b><br>균을 입으로 먹인 쥐에서 종양이 덜 자랐습니다. 가설의 첫 번째 행동인 <strong>씨앗 심기(섭취)</strong>가 실험에서 한 번 작동한 것입니다.</li>
+    <li class="reveal"><b>"줄어든 균과 늘어난 균이 모두 지도에 올랐다"</b><br>환자에게서 줄어든 균(심을 후보)과 늘어난 균(뽑을 후보)이 함께 정리되었습니다. <strong>심기와 잡초 뽑기</strong> 양쪽의 출발점이 생겼습니다.</li>
+    <li class="reveal"><b>"AI가 후보를 찾아냈다"</b><br>1만 2천 종 속에서 후보를 골라낸 것은 기계학습이었습니다. 우리 커뮤니티가 AI 도구로 논문을 찾고 읽으며 <strong>내 암종의 후보</strong>를 탐색하는 방식과 같은 방향입니다.</li>
+  </ol>
+
+  <div class="ainote reveal">
+    <span class="label">AI 클로드 주석</span>
+    <p style="margin:.2em 0 .4em"><strong>다음 계단을 위해 알아 둘 점.</strong> 가능성을 정확히 재기 위해, 논문이 스스로 밝힌 한계와 제가 덧붙이는 관찰을 정리합니다.</p>
+    <ul>
+      <li><strong>사람 수가 적습니다.</strong> 환자 24명, 건강인 18명입니다. 다른 연구에서도 같은 방향이 나왔지만, 그 연구는 비흡연자만 모은 것이 아니었습니다.</li>
+      <li><strong>쥐 실험의 조건.</strong> 면역 기능이 거의 없는 쥐(누드마우스)에게 암세포를 피부 밑에 심은 모델입니다. 그래서 장–폐 축이나 면역을 통한 효과는 이번 실험으로 확인할 수 없었습니다. 많이 먹인 그룹에서 쥐 1마리가 원인 불명으로 죽었습니다.</li>
+      <li><strong>살 수 있는 제품이 아직 없습니다.</strong> 이 균은 연구용 균주로 키운 것이며, 사람용 유산균 제품으로 나와 있지 않습니다.</li>
+      <li><strong>"거름 주기"는 아직 빈칸입니다.</strong> 어떤 음식이나 환경이 이 균을 늘리는지는 이번 논문이 시험하지 않았습니다.</li>
+      <li><strong>근거의 위치.</strong> 사람 관찰 + 세포·동물 실험 단계입니다. 가능성의 계단으로는 ①~③을 올랐고, ④ 사람 시험은 아직 비어 있습니다.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 7. AI 질문 ============ -->
+<section id="ask">
+  <span class="secno">일곱째 이야기</span>
+  <h2>내 암종의 "용도변경 미생물" 찾기: AI에게 이렇게 물어보세요</h2>
+  <p>아래 문장을 그대로 복사해서 AI에게 물어보세요. 괄호 안만 내 상황으로 바꾸면 됩니다. 끝에 <strong>"출처를 알려줘"</strong>를 붙이는 것이 핵심입니다.</p>
+
+  <div class="prompt reveal">
+    <p class="when">오늘 논문의 뒷이야기가 궁금할 때</p>
+    <p class="ptext">클로스트리디움 아미노필룸(Clostridium aminophilum)과 암에 관한 연구가 이 논문 이후에 더 나왔는지 찾아줘. 각 연구의 제목과 링크, 사람 연구인지 동물 연구인지 함께 알려줘.</p>
+    <button class="copy" type="button">복사하기</button>
+  </div>
+
+  <div class="prompt reveal">
+    <p class="when">내 암종에서 줄어든 "심을 균"을 찾을 때</p>
+    <p class="ptext">(대장암) 환자에게서 건강인보다 줄어 있다고 보고된 장내 미생물을 찾아줘. 균 이름, 연구한 사람 수, 몇 개의 연구에서 같은 결과가 나왔는지 표로 정리하고 출처를 알려줘.</p>
+    <button class="copy" type="button">복사하기</button>
+  </div>
+
+  <div class="prompt reveal">
+    <p class="when">내 암종에서 늘어난 "뽑을 균"을 찾을 때</p>
+    <p class="ptext">(위암) 환자에게서 늘어나 있고 암 진행과 관련 있다고 보고된 장내 미생물을 찾아줘. 그 균을 줄이는 방법이 연구된 적이 있는지도 함께 알려주고 출처를 붙여줘.</p>
+    <button class="copy" type="button">복사하기</button>
+  </div>
+
+  <div class="prompt reveal">
+    <p class="when">"거름 주기"의 가능성을 찾을 때</p>
+    <p class="ptext">장 속에서 부티르산(butyrate)을 만드는 균을 늘리는 음식이나 식이섬유에 관한 사람 연구가 있는지 찾아줘. 암 환자를 대상으로 한 연구가 있다면 따로 표시하고 출처를 알려줘.</p>
+    <button class="copy" type="button">복사하기</button>
+  </div>
+
+  <div class="prompt reveal">
+    <p class="when">이미 살 수 있는 유산균 중에 후보가 있는지 볼 때</p>
+    <p class="ptext">이미 판매 중인 유산균(프로바이오틱스) 균주 중에서 (폐암) 관련 연구가 있는 것을 찾아줘. 균주 이름, 연구 종류(세포·동물·사람), 결과를 정리하고 출처를 알려줘.</p>
+    <button class="copy" type="button">복사하기</button>
+  </div>
+</section>
+
+<!-- ============ 8. 첫걸음 ============ -->
+<section id="try">
+  <span class="secno">여덟째 이야기</span>
+  <h2>이것부터 시도해 보세요!</h2>
+  <ol class="steps">
+    <li class="reveal"><b>하나.</b> 위의 질문 중 하나를 골라 내 암종 이름을 넣고 AI에게 물어보기</li>
+    <li class="reveal"><b>둘.</b> 찾은 균을 "심을 균"과 "뽑을 균"으로 나누어 메모하기</li>
+    <li class="reveal"><b>셋.</b> 각 균이 <strong>가능성의 계단</strong> 몇 번째 칸에 있는지 적어 보기</li>
+    <li class="reveal"><b>넷.</b> 커뮤니티에 공유하기. 내 암종의 지도가 다른 분의 지도와 만나면 더 넓어집니다</li>
+  </ol>
+</section>
+
+<div class="closing">
+  <p>약에서 시작한 질문이<br>이제 우리 몸속 정원까지 넓어졌습니다.<br><strong style="color:var(--green)">이미 곁에 있던 것에서, 새로운 가능성을.</strong></p>
+</div>
+
+<section id="refs" class="refs">
+  <h2 style="font-size:1.3rem">참고문헌</h2>
+  <h3>이 글의 원본 논문</h3>
+  <ol>
+    <li><span class="ttl">Gut Clostridium aminophilum as a protective microbe in never-smoker lung cancer: insights from metagenomics and machine learning</span><br>Zhang J, Fang L, Ma C, 외. Microbiology Spectrum, 2026.<br><a href="https://doi.org/10.1128/spectrum.00994-26">https://doi.org/10.1128/spectrum.00994-26</a></li>
+  </ol>
+  <h3>셋째 이야기 · 비교에 쓰인 다른 연구</h3>
+  <ol start="2">
+    <li><span class="ttl">Bifidobacterium animalis suppresses non-small cell lung cancer progression and modulates tumor immunity through indole-3-acetic acid</span><br>Song Q, Li X, 외. Cell Reports, 2025.<br><a href="https://doi.org/10.1016/j.celrep.2025.116132">https://doi.org/10.1016/j.celrep.2025.116132</a></li>
+    <li><span class="ttl">Lung cancer in patients who have never smoked — an emerging disease</span><br>LoPiccolo J, Gusev A, Christiani DC, Jänne PA. Nature Reviews Clinical Oncology, 2024.<br><a href="https://doi.org/10.1038/s41571-023-00844-0">https://doi.org/10.1038/s41571-023-00844-0</a></li>
+  </ol>
+  <h3>다섯째 이야기 · 균의 정체와 만드는 물질</h3>
+  <ol start="4">
+    <li><span class="ttl">Phylogeny of the ammonia-producing ruminal bacteria Peptostreptococcus anaerobius, Clostridium sticklandii, and Clostridium aminophilum sp. nov.</span><br>Paster BJ, Russell JB, 외. International Journal of Systematic Bacteriology, 1993.<br><a href="https://doi.org/10.1099/00207713-43-1-107">https://doi.org/10.1099/00207713-43-1-107</a></li>
+    <li><span class="ttl">Short-chain fatty acids: linking diet, the microbiome and immunity</span><br>Mann ER, Lam YK, Uhlig HH. Nature Reviews Immunology, 2024.<br><a href="https://doi.org/10.1038/s41577-024-01014-8">https://doi.org/10.1038/s41577-024-01014-8</a></li>
+    <li><span class="ttl">Gut microbial metabolites in lung cancer development and immunotherapy: novel insights into gut-lung axis</span><br>Li X, Shang S, Wu M, Song Q, Chen D. Cancer Letters, 2024.<br><a href="https://doi.org/10.1016/j.canlet.2024.217096">https://doi.org/10.1016/j.canlet.2024.217096</a></li>
+  </ol>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">히포크라테스의 친구들 · 용도변경 가설 노트 · 2026.10.30<br>원본 논문은 CC BY 4.0 오픈액세스입니다. 그래프 수치는 원 논문 그림에서 읽은 대략값입니다.</div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    document.documentElement.classList.add('no-io');
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(el){ io.observe(el); });
+  }
+  document.querySelectorAll('.copy').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var text = btn.parentNode.querySelector('.ptext').innerText;
+      function done(){ btn.textContent='복사되었어요'; btn.classList.add('ok'); setTimeout(function(){ btn.textContent='복사하기'; btn.classList.remove('ok'); },1800); }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } else { fallback(); }
+      function fallback(){
+        var ta=document.createElement('textarea'); ta.value=text; ta.style.position='fixed'; ta.style.opacity='0';
+        document.body.appendChild(ta); ta.select(); try{document.execCommand('copy'); done();}catch(e){} document.body.removeChild(ta);
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
