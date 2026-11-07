@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>장내 곰팡이가 간암을 키운다 — 연관에서 인과로 (2026)</title>
+<style>
+  :root{
+    --bg:#faf8f4; --card:#ffffff; --ink:#2b2b2b; --sub:#6b6b6b;
+    --teal:#0f5e5e; --teal-soft:#e3efee; --gold:#b45309; --gold-soft:#fdf0dc;
+    --sage:#5b7f5b; --sage-soft:#e9f0e6; --red:#b91c1c; --red-soft:#fdecec;
+    --purple:#6d28a8; --purple-soft:#f2e9fb; --line:#e5dfd3;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+    font-size:17px; line-height:1.72; padding:0 0 60px 0;
+    -webkit-text-size-adjust:100%;}
+  .wrap{max-width:780px; margin:0 auto; padding:0 16px;}
+  header{background:linear-gradient(135deg,#0f5e5e 0%,#146b6b 52%,#5b7f5b 100%);
+    color:#fff; padding:38px 16px 30px; text-align:center;}
+  header .tag{display:inline-block; background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.4);
+    border-radius:999px; padding:4px 14px; font-size:13px; margin-bottom:12px; letter-spacing:.3px;}
+  header h1{font-size:23px; line-height:1.4; font-weight:800; margin-bottom:10px;}
+  header p{font-size:15px; opacity:.94; line-height:1.55;}
+  .meta{background:#fff; border:1px solid var(--line); border-radius:12px; padding:12px 16px;
+    font-size:14px; color:var(--sub); margin-top:14px; text-align:left; box-shadow:0 1px 3px rgba(0,0,0,.05);}
+  .meta b{color:var(--ink);}
+  section{background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:22px 20px; margin-top:22px; box-shadow:0 1px 3px rgba(0,0,0,.04);}
+  h2{font-size:19px; color:var(--teal); font-weight:800; margin-bottom:14px;
+    padding-bottom:10px; border-bottom:2px solid var(--teal-soft); line-height:1.4;}
+  h2 .num{display:inline-block; background:var(--teal); color:#fff; border-radius:6px;
+    font-size:13px; padding:1px 8px; margin-right:8px; vertical-align:middle;}
+  h3{font-size:16px; color:var(--gold); font-weight:700; margin:18px 0 8px;}
+  h4{font-size:15px; color:var(--ink); font-weight:700; margin:14px 0 6px;}
+  p{margin-bottom:10px;}
+  ul,ol{margin:8px 0 12px 22px;}
+  li{margin-bottom:6px;}
+  b,strong{color:#111; font-weight:700;}
+  .lead{font-size:16.5px; color:var(--ink);}
+  table{width:100%; border-collapse:collapse; margin:12px 0; font-size:14px;}
+  th,td{border:1px solid var(--line); padding:8px 9px; text-align:left; vertical-align:top;}
+  th{background:var(--teal-soft); color:var(--teal); font-weight:700;}
+  tr:nth-child(even) td{background:#fcfbf8;}
+  .badge{display:inline-block; font-size:12px; font-weight:700; border-radius:5px;
+    padding:1px 7px; white-space:nowrap;}
+  .b-ok{background:var(--sage-soft); color:var(--sage); border:1px solid #c4d8c0;}
+  .b-strong{background:var(--gold-soft); color:var(--gold); border:1px solid #f0d5a8;}
+  .b-open{background:#eef2f7; color:#475569; border:1px solid #cdd7e3;}
+  .b-retract{background:var(--red-soft); color:var(--red); border:1px solid #f2c4c4;}
+  .card{background:var(--teal-soft); border-radius:10px; padding:13px 15px; margin:10px 0;
+    border-left:4px solid var(--teal);}
+  .card.gold{background:var(--gold-soft); border-left-color:var(--gold);}
+  .card.sage{background:var(--sage-soft); border-left-color:var(--sage);}
+  .card.red{background:var(--red-soft); border-left-color:var(--red);}
+  .card.purple{background:var(--purple-soft); border-left-color:var(--purple);}
+  .card h4{margin-top:0;}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:12px 0;}
+  .stat{background:#fcfbf8; border:1px solid var(--line); border-radius:10px; padding:12px; text-align:center;}
+  .stat .n{font-size:22px; font-weight:800; color:var(--teal); line-height:1.2;}
+  .stat .l{font-size:13px; color:var(--sub); margin-top:3px;}
+  .qa{margin:12px 0;}
+  .q{font-weight:700; color:var(--teal); margin-top:14px; padding-left:22px; position:relative;}
+  .q::before{content:"Q"; position:absolute; left:0; top:0; background:var(--teal); color:#fff;
+    font-size:11px; width:16px; height:16px; border-radius:4px; text-align:center; line-height:16px;}
+  .a{margin:4px 0 0 22px; color:#333;}
+  .svgbox{overflow-x:auto; margin:14px 0; padding:4px;}
+  svg{display:block; max-width:100%; height:auto; margin:0 auto;}
+  .foot{font-size:13px; color:var(--sub); margin-top:26px; padding:16px; background:#f5f2ec;
+    border-radius:10px; line-height:1.6;}
+  .foot b{color:var(--ink);}
+  .tagline{font-size:13px; color:var(--sub); margin-top:6px;}
+  @media(max-width:520px){
+    body{font-size:16px;}
+    .grid2{grid-template-columns:1fr;}
+    section{padding:18px 15px;}
+    header h1{font-size:20px;}
+    table{font-size:13px;}
+    th,td{padding:6px 7px;}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="tag">논문 해설 · 흐름 정리 · 2026</div>
+  <h1>장내 곰팡이가 간암을 키운다 —<br>“연관”에서 “인과”로</h1>
+  <p>지난 해설에서 “진균은 아직 연관성 수준”이라고 적었던<br>바로 그 빈칸을 채운 논문</p>
+</header>
+
+<div class="wrap">
+
+  <div class="meta">
+    <b>해설 대상 논문</b><br>
+    Zhou X, Liu C, Wei W, Wang X, Pan Y, Jiao Y, Li S, Zhang Y, Lau HCH, Zhang R, Li D, Cheung AHK, Zheng M, Pan W, Wong CC, Wong VWS, Yu J, Zhang X. “Fungus <i>Rhizopus arrhizus</i> promotes MASLD-associated hepatocellular carcinoma through generating kynurenic acid.” <i>Cell Metabolism</i> 38, 2224–2238 (2026-11-03). DOI: 10.1016/j.cmet.2026.09.005<br><br>
+    <b>성격</b> 원저 실험논문(Article) · Open Access(CC BY-NC) &nbsp;|&nbsp; <b>소속</b> 홍콩중문대(CUHK) 소화기내과<br>
+    <b>투고</b> 2025-12-03 → <b>수정</b> 2026-08-04 → <b>게재확정</b> 2026-09-07 (심사 9개월)
+    <div class="tagline">※ 이 문서는 논문을 <b>일반인이 읽을 수 있게</b> 풀어쓴 해설입니다. 원문을 대체하지 않습니다.</div>
+  </div>
+
+  <!-- ============ 1 ============ -->
+  <section>
+    <h2><span class="num">1</span>30초 요약</h2>
+    <p class="lead">한 문장으로: <b>지방간에서 간암으로 가는 길목에서 <u>장에 사는 곰팡이 한 종</u>이 범인으로 지목됐고, 그 곰팡이가 쓰는 <u>흉기 분자</u>와 그 흉기가 꽂히는 <u>간세포 안의 자물쇠</u>까지 밝혀졌다.</b></p>
+
+    <div class="grid2">
+      <div class="card">
+        <h4>① 범인</h4>
+        <b><i>Rhizopus arrhizus</i></b>(리조푸스 아리주스) — 지방간이 간암으로 진행할수록 가장 일관되게 늘어난 곰팡이.
+      </div>
+      <div class="card gold">
+        <h4>② 흉기</h4>
+        <b>키뉴렌산(KYNA)</b> — 곰팡이가 장에서 만들어 <b>간문맥</b>을 타고 간으로 보내는 작은 분자.
+      </div>
+      <div class="card sage">
+        <h4>③ 자물쇠</h4>
+        간암세포 안의 <b>IQGAP1</b> 단백질. KYNA가 여기에 직접 붙어 <b>MAPK</b> 성장 스위치를 켭니다.
+      </div>
+      <div class="card red">
+        <h4>④ 정직한 그늘</h4>
+        <b>전부 생쥐·세포 실험</b>입니다. 사람 데이터는 “곰팡이가 많더라”는 <b>연관</b>까지만.
+      </div>
+    </div>
+
+    <div class="card purple">
+      <h4>⭐ 이 문서의 핵심 — 이 논문의 “위치”</h4>
+      지난 10월 해설(<b>「종양내 미생물 — 존재에서 관계로」</b>)에서 우리는 이렇게 정리했습니다. <b>“바이러스는 인과 확립, 세균은 후보, <u>진균은 아직 연관성 수준</u>”.</b> 이 논문은 그 <b>맨 끝 칸을 채우러 온 연구</b>입니다. 곰팡이 한 종을 놓고 <b>범인 지목 → 흉기 확보 → 자물쇠 확인 → 흉기 뺏으면 범행 중단</b>까지 한 편에 담았습니다. 2장의 시계열에서 이 흐름을 한눈에 보실 수 있습니다.
+    </div>
+  </section>
+
+  <!-- ============ 2 ============ -->
+  <section>
+    <h2><span class="num">2</span>큰 흐름 속의 위치 — 발견의 시계열</h2>
+    <p>“이 논문은 우리가 계속 봐온 것들의 연장선”이라는 말을 <b>한 장의 그림</b>으로 보여줍니다. 아래로 갈수록 질문이 깊어집니다.</p>
+
+    <div class="svgbox">
+    <svg viewBox="0 0 720 700" role="img" aria-label="종양·장내 미생물 연구가 존재에서 관계로, 다시 인과로 진화한 시계열 도식">
+      <defs>
+        <marker id="arw" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+          <path d="M0,0 L7,3 L0,6 Z" fill="#0f5e5e"/>
+        </marker>
+        <style>
+          .yr{font:700 15px sans-serif; fill:#0f5e5e;}
+          .tt{font:700 13px sans-serif; fill:#222;}
+          .st{font:400 11.5px sans-serif; fill:#555;}
+          .qq{font:700 11.5px sans-serif; fill:#b45309;}
+        </style>
+      </defs>
+
+      <line x1="60" y1="92" x2="60" y2="640" stroke="#c9dcd9" stroke-width="3"/>
+      <line x1="60" y1="640" x2="60" y2="658" stroke="#0f5e5e" stroke-width="3" marker-end="url(#arw)"/>
+
+      <!-- 2020 -->
+      <circle cx="60" cy="112" r="9" fill="#0f5e5e"/>
+      <text x="80" y="117" class="yr">2020</text>
+      <rect x="150" y="80" width="540" height="66" rx="8" fill="#e3efee" stroke="#0f5e5e" stroke-width="1"/>
+      <text x="163" y="101" class="tt">Nejman, Science — “종양은 무균”이 무너지다</text>
+      <text x="163" y="120" class="st">1,526개 종양·7개 암종에서 세균을 발견. 그것도 세포 안에서.</text>
+      <text x="163" y="138" class="qq">질문: 있나, 없나?  →  답: 있다</text>
+
+      <!-- 2022 -->
+      <circle cx="60" cy="212" r="9" fill="#0f5e5e"/>
+      <text x="80" y="217" class="yr">2022</text>
+      <rect x="150" y="180" width="540" height="66" rx="8" fill="#e9f0e6" stroke="#5b7f5b" stroke-width="1"/>
+      <text x="163" y="201" class="tt">Narunsky-Haziza, Cell / Fu, Cell — 곰팡이도 있다, 일도 한다</text>
+      <text x="163" y="220" class="st">세균만이 아니라 진균(마이코바이옴)도 존재. 세균은 전이까지 돕는다.</text>
+      <text x="163" y="238" class="qq">질문: 몇 종류가, 무슨 일을?  →  답: 세 계(界)가, 일을 한다</text>
+
+      <!-- 2026.10 -->
+      <circle cx="60" cy="312" r="9" fill="#0f5e5e"/>
+      <text x="80" y="317" class="yr">2026</text>
+      <text x="80" y="333" class="st">10월</text>
+      <rect x="150" y="280" width="540" height="78" rx="8" fill="#fdf0dc" stroke="#b45309" stroke-width="1"/>
+      <text x="163" y="301" class="tt">Mei, Acta Pharm Sin B — 계(界) 사이의 “관계”로 (우리의 지난 해설)</text>
+      <text x="163" y="320" class="st">세균·진균·바이러스를 한 판에 놓고 상호작용을 정리한 리뷰.</text>
+      <text x="163" y="338" class="st">단, 확실성 기울기를 명시: 바이러스=인과 확립 / 세균=후보 / 진균=연관성.</text>
+      <text x="163" y="353" class="qq">남은 숙제: 곰팡이도 정말 “원인”이라 말할 수 있나?</text>
+
+      <!-- 2026.11 본 논문 -->
+      <circle cx="60" cy="432" r="12" fill="#6d28a8"/>
+      <text x="80" y="437" class="yr">2026</text>
+      <text x="80" y="453" class="st">11월</text>
+      <rect x="150" y="386" width="540" height="112" rx="8" fill="#f2e9fb" stroke="#6d28a8" stroke-width="2"/>
+      <text x="163" y="408" class="tt">★ 본 논문 — Zhou, Cell Metabolism — 곰팡이 한 종의 “인과”를 세우다</text>
+      <text x="163" y="428" class="st">범인: Rhizopus arrhizus   ·   흉기: 키뉴렌산(KYNA)   ·   자물쇠: IQGAP1 → MAPK</text>
+      <text x="163" y="447" class="st">무균쥐 이식·항진균제·유전자 제거·억제제까지 — 끊으면 종양이 멈춘다.</text>
+      <text x="163" y="466" class="st">덤: 이 곰팡이가 장내 “세균” 지형까지 바꾼다 (계 사이의 관계 = 10월 리뷰와 연결)</text>
+      <text x="163" y="486" class="qq">질문: 원인인가?  →  답: 생쥐에서는 그렇다. 사람은 아직.</text>
+
+      <!-- 다음 -->
+      <circle cx="60" cy="562" r="9" fill="#5b7f5b"/>
+      <text x="80" y="567" class="yr">다음</text>
+      <rect x="150" y="528" width="540" height="88" rx="8" fill="#f5f2ec" stroke="#9a9384" stroke-width="1" stroke-dasharray="5 4"/>
+      <text x="163" y="550" class="tt">예상되는 자연스러운 다음 단계</text>
+      <text x="163" y="569" class="st">① 사람 대상 장기 추적 — 곰팡이·KYNA가 먼저 오르고 암이 뒤따르는지</text>
+      <text x="163" y="587" class="st">② KYNA를 혈액 표지자로 쓸 수 있는지 (진단)</text>
+      <text x="163" y="605" class="st">③ 축(곰팡이–KYNA–IQGAP1)을 어디서 끊을지 — 치료·예방 개입 지점 찾기</text>
+    </svg>
+    </div>
+
+    <div class="card">
+      <h4>왜 이 순서가 중요한가</h4>
+      <b>“있다”</b>는 것과 <b>“원인이다”</b>는 것은 전혀 다른 주장입니다. 2020년에 한 번, 이 경계를 넘다가 크게 넘어진 일이 있었습니다(아래 9장의 철회 논문). 그래서 이번 논문처럼 <b>인과를 주장하려면 증거의 계단을 하나씩 밟아 올라가야</b> 합니다. 4장이 그 계단입니다.
+    </div>
+  </section>
+
+  <!-- ============ 3 ============ -->
+  <section>
+    <h2><span class="num">3</span>배경 — 왜 하필 지방간–간암인가</h2>
+    <p><b>MASLD</b>(대사이상 관련 지방간질환, 옛 이름 NAFLD)는 간에 지방이 끼는 것에서 시작해 <b>염증(MASH) → 섬유화 → 간암(HCC)</b>으로 이어질 수 있습니다. 논문이 인용한 전망은 이렇습니다.</p>
+
+    <div class="grid2">
+      <div class="stat"><div class="n">82~122%</div><div class="l">2030년까지 예상되는<br>MASLD 관련 간암 증가율</div></div>
+      <div class="stat"><div class="n">가장 빠름</div><div class="l">현재 간암 원인 중<br>증가 속도 1위</div></div>
+    </div>
+
+    <p>이 연구팀은 전부터 <b>장–간 축(gut-liver axis)</b>을 파온 곳입니다. 장과 간은 <b>간문맥</b>이라는 굵은 혈관으로 직접 연결돼 있어서, 장에서 만들어진 물질이 <u>온몸을 돌기 전에 간으로 먼저</u> 갑니다. 그래서 장에 사는 것들이 간에 미치는 영향이 유독 큽니다.</p>
+
+    <div class="card gold">
+      <h4>그동안 비어 있던 자리 — 곰팡이</h4>
+      장내 <b>세균</b>과 간 질환의 관계는 많이 연구됐습니다(장 투과성 증가, 내독소 유입, 담즙산 변화 등). 그런데 <b>곰팡이</b>는 장내 미생물 중 숫자가 적다는 이유로 오래 뒷전이었습니다. 저자들의 표현 그대로 <b>“largely overlooked(크게 간과돼 왔다)”</b>.
+    </div>
+
+    <p>곰팡이가 항상 나쁜 것도 아닙니다. 같은 연구 흐름에서 <b><i>Fusarium foetens</i></b>라는 곰팡이는 오히려 지방간염을 <b>완화</b>시킨다는 결과가 2025년 <i>Science</i>에 실렸습니다. 즉 <b>곰팡이는 종(種)에 따라 적군도 되고 아군도 된다</b>는 것 — 이번 논문에서도 효모(<i>S. cerevisiae</i>)를 대조군으로 넣었는데 아무 일도 일어나지 않았습니다.</p>
+  </section>
+
+  <!-- ============ 4 ============ -->
+  <section>
+    <h2><span class="num">4</span>인과를 세운 방법 — 증거의 계단</h2>
+    <p>이 논문의 진짜 값어치는 “발견”보다 <b>“증명의 순서”</b>에 있습니다. 한 칸씩 올라가 보겠습니다.</p>
+
+    <table>
+      <thead><tr><th style="width:5%">칸</th><th style="width:33%">무엇을 했나</th><th>결과</th><th style="width:13%">말할 수 있는 것</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>1</b></td>
+          <td>생쥐에게 고지방·고콜레스테롤 먹이를 14개월 먹이며 <b>시간 순서대로</b> 장내 곰팡이를 추적 (대조 → 1개월 지방간 → 3개월 지방간염 → 8개월 섬유화 → 14개월 간암)</td>
+          <td>곰팡이 다양성이 꾸준히 <b>감소</b>. 그 와중에 <b><i>R. arrhizus</i>만 단계마다 계속 증가</b></td>
+          <td><span class="badge b-open">연관</span></td>
+        </tr>
+        <tr>
+          <td><b>2</b></td>
+          <td>사람 코호트 <b>3개</b>에서 대변 검사 (자체 90명 + 외부 99명 + 외부 68명)</td>
+          <td>세 집단 모두에서 환자 쪽에 <i>R. arrhizus</i>가 유의하게 많음. <b>나이·당뇨·식단 점수와는 무관</b></td>
+          <td><span class="badge b-open">연관</span></td>
+        </tr>
+        <tr>
+          <td><b>3</b></td>
+          <td><b>무균 생쥐</b>(몸에 미생물이 하나도 없는 쥐)에게 간암 쥐의 대변을 이식(FMT)</td>
+          <td>받은 쥐에서 지방간염과 간세포 증식이 재현됨. <i>R. arrhizus</i>도 같이 옮겨감</td>
+          <td><span class="badge b-strong">전이 가능</span></td>
+        </tr>
+        <tr>
+          <td><b>4</b></td>
+          <td>항진균제로 기존 곰팡이를 비운 뒤 <b><i>R. arrhizus</i>만 따로 먹임</b> (모델 2종: 식이 단독, 식이+발암물질)</td>
+          <td>종양 개수·크기·총량 모두 증가. AFP(간암 표지자)·ALT·AST 상승. <b>효모를 먹인 대조군은 변화 없음</b></td>
+          <td><span class="badge b-ok">인과(생쥐)</span></td>
+        </tr>
+        <tr>
+          <td><b>5</b></td>
+          <td>곰팡이를 키운 <b>배양액만</b>(곰팡이 없이) 암세포에 처리. 열·단백질분해효소 처리, 분자 크기별 분리</td>
+          <td>배양액만으로도 증식 촉진. 열·효소에 안 망가짐 → <b>단백질이 아닌 3kDa 미만 작은 분자</b>가 범인</td>
+          <td><span class="badge b-ok">흉기 좁힘</span></td>
+        </tr>
+        <tr>
+          <td><b>6</b></td>
+          <td>대사체 분석으로 그 작은 분자를 특정 → <b>KYNA</b>. KYNA만 따로 생쥐 물에 타서 먹임</td>
+          <td>곰팡이를 먹인 것과 <b>거의 같은 결과</b>(종양 증가, 면역 억제, 섬유화)</td>
+          <td><span class="badge b-ok">흉기 확정</span></td>
+        </tr>
+        <tr>
+          <td><b>7</b></td>
+          <td>KYNA가 어디에 붙는지 추적 (단백질 구조 분석·분자 도킹·SPR·MST)</td>
+          <td><b>IQGAP1</b>에 직접 결합. 결합력 K<sub>D</sub> 2.2~3.0 μM. 구조가 비슷한 분자(퀴날드산)는 <b>안 붙음</b> → 특이적</td>
+          <td><span class="badge b-ok">자물쇠 확정</span></td>
+        </tr>
+        <tr>
+          <td><b>8</b></td>
+          <td>IQGAP1 유전자를 아예 제거(CRISPR)하거나, 억제제(QGGP)로 막음</td>
+          <td>KYNA를 줘도 <b>종양 촉진 효과가 사라짐</b></td>
+          <td><span class="badge b-ok">끊으면 멈춤</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="card sage">
+      <h4>⭐ 이 표에서 눈여겨볼 두 칸</h4>
+      <b>4번 칸의 효모 대조군</b> — “곰팡이를 더 먹였더니 나빠졌다”가 아니라 <b>“이 곰팡이만 그렇다”</b>를 보여줍니다.<br>
+      <b>8번 칸</b> — 원인을 주장하려면 <b>“빼면 사라진다”</b>를 보여야 합니다. 더하는 실험만 있으면 인과가 아니라 상관에 가깝습니다.
+    </div>
+  </section>
+
+  <!-- ============ 5 ============ -->
+  <section>
+    <h2><span class="num">5</span>기전 한 장 — 장에서 간까지, 무슨 일이 일어나나</h2>
+
+    <div class="svgbox">
+    <svg viewBox="0 0 720 470" role="img" aria-label="장내 곰팡이가 키뉴렌산을 만들어 간문맥을 통해 간으로 보내고 IQGAP1을 통해 MAPK 경로를 켜는 기전 도식">
+      <defs>
+        <marker id="a2" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto">
+          <path d="M0,0 L6.5,3 L0,6 Z" fill="#b45309"/>
+        </marker>
+        <marker id="a3" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto">
+          <path d="M0,0 L6.5,3 L0,6 Z" fill="#0f5e5e"/>
+        </marker>
+        <style>
+          .zt{font:700 13px sans-serif; fill:#0f5e5e;}
+          .bt{font:700 12.5px sans-serif; fill:#222;}
+          .nt{font:400 11.5px sans-serif; fill:#555;}
+          .wt{font:700 11.5px sans-serif; fill:#fff;}
+          .rt{font:700 11.5px sans-serif; fill:#b91c1c;}
+        </style>
+      </defs>
+
+      <!-- zone 1 : gut -->
+      <rect x="18" y="40" width="200" height="400" rx="10" fill="#e9f0e6" stroke="#5b7f5b"/>
+      <text x="118" y="64" class="zt" text-anchor="middle">① 장(腸)</text>
+
+      <rect x="38" y="84" width="160" height="58" rx="7" fill="#fff" stroke="#5b7f5b"/>
+      <text x="118" y="105" class="bt" text-anchor="middle">지방간이 진행할수록</text>
+      <text x="118" y="124" class="nt" text-anchor="middle">곰팡이 다양성 ↓</text>
+
+      <rect x="38" y="156" width="160" height="66" rx="7" fill="#5b7f5b"/>
+      <text x="118" y="180" class="wt" text-anchor="middle">Rhizopus arrhizus</text>
+      <text x="118" y="200" class="wt" text-anchor="middle">홀로 증가 ↑↑</text>
+      <text x="118" y="215" style="font:400 10.5px sans-serif; fill:#e9f0e6;" text-anchor="middle">단계마다 일관되게</text>
+
+      <rect x="38" y="238" width="160" height="78" rx="7" fill="#fff" stroke="#b45309"/>
+      <text x="118" y="259" class="bt" text-anchor="middle">곰팡이가 만든다</text>
+      <text x="118" y="283" style="font:800 16px sans-serif; fill:#b45309;" text-anchor="middle">KYNA</text>
+      <text x="118" y="302" class="nt" text-anchor="middle">키뉴렌산 (3kDa 미만)</text>
+
+      <rect x="38" y="332" width="160" height="88" rx="7" fill="#fdecec" stroke="#b91c1c"/>
+      <text x="118" y="353" class="rt" text-anchor="middle">덤: 세균 지형도 바뀜</text>
+      <text x="118" y="373" class="nt" text-anchor="middle">↑ B. fragilis, C. jejuni</text>
+      <text x="118" y="390" class="nt" text-anchor="middle">↑ L. monocytogenes</text>
+      <text x="118" y="407" class="nt" text-anchor="middle">↓ 아커만시아, 유산균</text>
+
+      <!-- arrow gut -> liver -->
+      <line x1="220" y1="277" x2="268" y2="277" stroke="#b45309" stroke-width="3" marker-end="url(#a2)"/>
+      <text x="244" y="266" style="font:700 11px sans-serif; fill:#b45309;" text-anchor="middle">간문맥</text>
+
+      <!-- zone 2 : liver cell -->
+      <rect x="272" y="40" width="200" height="400" rx="10" fill="#fdf0dc" stroke="#b45309"/>
+      <text x="372" y="64" class="zt" text-anchor="middle">② 간세포 안</text>
+
+      <rect x="292" y="84" width="160" height="56" rx="7" fill="#fff" stroke="#b45309"/>
+      <text x="372" y="105" class="bt" text-anchor="middle">KYNA 도착</text>
+      <text x="372" y="124" class="nt" text-anchor="middle">세포 안(세포질)으로</text>
+
+      <rect x="292" y="154" width="160" height="72" rx="7" fill="#b45309"/>
+      <text x="372" y="178" class="wt" text-anchor="middle">IQGAP1에 직접 결합</text>
+      <text x="372" y="197" style="font:400 10.5px sans-serif; fill:#fdf0dc;" text-anchor="middle">결합력 2.2~3.0 μM (KD)</text>
+      <text x="372" y="213" style="font:400 10.5px sans-serif; fill:#fdf0dc;" text-anchor="middle">구조 비슷한 분자는 안 붙음</text>
+
+      <line x1="372" y1="228" x2="372" y2="248" stroke="#b45309" stroke-width="2.5" marker-end="url(#a2)"/>
+
+      <rect x="292" y="252" width="160" height="96" rx="7" fill="#fff" stroke="#b45309"/>
+      <text x="372" y="273" class="bt" text-anchor="middle">MAPK 스위치 ON</text>
+      <text x="372" y="296" style="font:700 12px sans-serif; fill:#b45309;" text-anchor="middle">B-RAF → MEK → ERK</text>
+      <text x="372" y="316" class="nt" text-anchor="middle">세 단계가 차례로 인산화</text>
+      <text x="372" y="335" class="nt" text-anchor="middle">(IQGAP1은 이 셋을 묶는 받침대)</text>
+
+      <rect x="292" y="362" width="160" height="58" rx="7" fill="#f2e9fb" stroke="#6d28a8"/>
+      <text x="372" y="383" style="font:700 11.5px sans-serif; fill:#6d28a8;" text-anchor="middle">통상의 KYNA 수용체</text>
+      <text x="372" y="402" class="nt" text-anchor="middle">GPR35·AhR는 <tspan font-weight="700">관여 안 함</tspan></text>
+
+      <line x1="474" y1="277" x2="522" y2="277" stroke="#0f5e5e" stroke-width="3" marker-end="url(#a3)"/>
+
+      <!-- zone 3 : outcome -->
+      <rect x="526" y="40" width="176" height="400" rx="10" fill="#e3efee" stroke="#0f5e5e"/>
+      <text x="614" y="64" class="zt" text-anchor="middle">③ 결과</text>
+
+      <rect x="542" y="84" width="144" height="56" rx="7" fill="#fff" stroke="#0f5e5e"/>
+      <text x="614" y="105" class="bt" text-anchor="middle">증식 ↑</text>
+      <text x="614" y="124" class="nt" text-anchor="middle">사이클린 D1 ↑, p27 ↓</text>
+
+      <rect x="542" y="152" width="144" height="56" rx="7" fill="#fff" stroke="#0f5e5e"/>
+      <text x="614" y="173" class="bt" text-anchor="middle">세포자살 ↓</text>
+      <text x="614" y="192" class="nt" text-anchor="middle">카스파제 활성 감소</text>
+
+      <rect x="542" y="220" width="144" height="70" rx="7" fill="#fff" stroke="#0f5e5e"/>
+      <text x="614" y="241" class="bt" text-anchor="middle">면역 억제</text>
+      <text x="614" y="260" class="nt" text-anchor="middle">IFN-γ CD8 T세포 ↓</text>
+      <text x="614" y="277" class="nt" text-anchor="middle">MDSC(억제세포) ↑</text>
+
+      <rect x="542" y="302" width="144" height="70" rx="7" fill="#fff" stroke="#0f5e5e"/>
+      <text x="614" y="323" class="bt" text-anchor="middle">섬유화 ↑</text>
+      <text x="614" y="342" class="nt" text-anchor="middle">α-SMA·콜라겐 I ↑</text>
+      <text x="614" y="359" class="nt" text-anchor="middle">단, 지방 축적은 그대로</text>
+
+      <rect x="542" y="384" width="144" height="40" rx="7" fill="#0f5e5e"/>
+      <text x="614" y="409" class="wt" text-anchor="middle">→ 간암 촉진</text>
+    </svg>
+    </div>
+
+    <div class="card">
+      <h4>쉬운 비유로</h4>
+      장에 들어앉은 곰팡이가 <b>편지(KYNA)</b>를 씁니다. 그 편지는 <b>간문맥이라는 전용 우편관</b>을 타고 곧장 간으로 갑니다. 간세포 안에는 <b>IQGAP1이라는 작업대</b>가 있는데, 거기에 성장 담당 일꾼 셋(B-RAF·MEK·ERK)이 올라앉아 있습니다. 편지가 작업대에 붙으면 세 일꾼이 <b>“증식하라”</b>는 명령을 연달아 전달합니다. 동시에 간을 지키던 면역세포는 힘을 잃습니다.
+    </div>
+
+    <h3>세 가지 반전</h3>
+    <ol>
+      <li><b>곰팡이는 간에 오지 않는다.</b> 간 조직에서 <i>R. arrhizus</i>는 검출되지 않았습니다(PCR·FISH 모두 음성). <b>원격으로 분자만 보냅니다.</b></li>
+      <li><b>KYNA가 쓰던 원래 문이 아니다.</b> KYNA는 원래 GPR35·AhR라는 수용체로 작용하는 것으로 알려져 있는데, 그 둘을 막아도 효과가 그대로였습니다. <b>완전히 새로운 경로</b>입니다.</li>
+      <li><b>우리 몸이 만든 KYNA는 범인이 아니다.</b> 사람 몸도 트립토판에서 KYNA를 만듭니다(IDO1·TDO2 효소). 그런데 그 효소를 제거하거나 약으로 막아도 효과가 안 없어졌습니다. → <b>곰팡이가 만든 KYNA가 주범</b>입니다.</li>
+    </ol>
+  </section>
+
+  <!-- ============ 6 ============ -->
+  <section>
+    <h2><span class="num">6</span>지난 해설과 이어지는 지점 — “계(界) 사이의 관계”</h2>
+    <p>10월 해설의 핵심은 <b>cross-kingdom</b>, 즉 세균·진균·바이러스가 <b>서로 영향을 주고받는다</b>는 것이었습니다. 이번 논문에 그 장면이 실측 데이터로 들어 있습니다.</p>
+
+    <p><i>R. arrhizus</i>를 먹인 생쥐의 장을 분석했더니 — <b>곰팡이 하나를 넣었을 뿐인데 세균 지형 전체가 바뀌었습니다.</b></p>
+
+    <table>
+      <thead><tr><th>방향</th><th>바뀐 것</th><th>알려진 성격</th></tr></thead>
+      <tbody>
+        <tr><td><b>증가 ↑</b></td><td><i>Bacteroides fragilis</i></td><td>독소 생산형은 대장암과 연관되는 균</td></tr>
+        <tr><td><b>증가 ↑</b></td><td><i>Campylobacter jejuni</i></td><td>장염을 일으키는 병원성 균</td></tr>
+        <tr><td><b>증가 ↑</b></td><td><i>Listeria monocytogenes</i></td><td>병원성 균</td></tr>
+        <tr><td><b>감소 ↓</b></td><td><i>Akkermansia</i> (아커만시아)</td><td>장 점막을 지키는 대표적 유익균</td></tr>
+        <tr><td><b>감소 ↓</b></td><td><i>Lactobacillus</i> (유산균)</td><td>대표적 유익균</td></tr>
+      </tbody>
+    </table>
+
+    <div class="card purple">
+      <h4>⭐ 커뮤니티 관점에서 중요한 대목</h4>
+      우리는 그동안 <b>“장내 세균”</b>을 주로 봐 왔습니다. 그런데 이 결과는 <b>세균 지형이 나빠진 것의 상류(上流)에 곰팡이가 있을 수 있다</b>는 가능성을 보여줍니다. 아커만시아가 줄었다는 결과를 보고 “아커만시아를 늘려야겠다”로 바로 갈 게 아니라, <b>왜 줄었는지</b>를 한 칸 더 거슬러 올라가 봐야 한다는 뜻입니다. 10월 해설에서 말한 <b>“따로 보던 것을 합쳐서 본다”</b>가 바로 이런 장면입니다.
+    </div>
+  </section>
+
+  <!-- ============ 7 ============ -->
+  <section>
+    <h2><span class="num">7</span>개입 지점은 어디인가 — 가능성과 근거 등급</h2>
+    <p class="lead">우리 커뮤니티가 가장 궁금해할 대목입니다. <b>이 축(곰팡이 → KYNA → IQGAP1 → MAPK)을 어디서 끊을 수 있나?</b></p>
+
+    <div class="card red">
+      <h4>⛔ 먼저 분명히 해둘 것</h4>
+      아래 표는 <b>“연구가 어디를 겨냥할 수 있는지”를 정리한 지도</b>이지, <b>지금 해볼 수 있는 방법의 목록이 아닙니다.</b> 이 논문에서 사람에게 시험된 개입은 <b>하나도 없습니다.</b> 저자들 자신이 결론에서 이렇게 적었습니다 — <i>“이 축을 약으로 조절하는 것이 환자에게 실제 이익이 되는지는 <b>아직 결정되지 않았다</b>.”</i>
+    </div>
+
+    <table>
+      <thead><tr><th style="width:17%">끊는 자리</th><th style="width:30%">생각해볼 수 있는 방향</th><th>이 논문이 보여준 것 / 보여주지 않은 것</th><th style="width:13%">근거</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>① 곰팡이<br>자체</b></td>
+          <td>항진균 접근, 혹은 경쟁 곰팡이·유익균으로 자리 밀어내기</td>
+          <td>연구에서 암포테리신 B는 <b>실험 조건을 맞추려고 쓴 전처리</b>였지 치료 시험이 아닙니다. 사람에서 항진균제가 간암을 줄인다는 데이터는 <b>이 논문에 없습니다.</b></td>
+          <td><span class="badge b-open">생쥐 전처리</span></td>
+        </tr>
+        <tr>
+          <td><b>② KYNA<br>생성</b></td>
+          <td>곰팡이의 KYNA 생산 경로 차단</td>
+          <td>곰팡이가 어떤 효소로 KYNA를 만드는지는 <b>이 논문에서 밝히지 않았습니다.</b> 표적이 아직 없는 셈입니다.</td>
+          <td><span class="badge b-open">미확인</span></td>
+        </tr>
+        <tr>
+          <td><b>③ 숙주의<br>트립토판 경로</b></td>
+          <td>IDO1·TDO2 억제 (에파카도스타트 등 기존 약)</td>
+          <td><b>명시적으로 실패했습니다.</b> 유전자 제거도, 약물 억제도 효과를 없애지 못했습니다. 숙주 경로가 아니라 <b>곰팡이 경로</b>이기 때문입니다.</td>
+          <td><span class="badge b-retract">효과 없음</span></td>
+        </tr>
+        <tr>
+          <td><b>④ KYNA의<br>통상 수용체</b></td>
+          <td>GPR35·AhR 차단</td>
+          <td><b>역시 실패했습니다.</b> 이 경로를 통하지 않습니다. — 이 두 칸은 “막다른 길”을 미리 알려준다는 점에서 값진 음성 결과입니다.</td>
+          <td><span class="badge b-retract">효과 없음</span></td>
+        </tr>
+        <tr>
+          <td><b>⑤ IQGAP1</b></td>
+          <td>IQGAP1 억제제 (논문에서는 QGGP)</td>
+          <td><b>생쥐에서 작동했습니다.</b> 종양 부피·무게·증식 모두 감소. 다만 QGGP는 <b>연구용 물질</b>이고, 사람 간암에 쓰인 적이 없습니다.</td>
+          <td><span class="badge b-ok">생쥐 유효</span></td>
+        </tr>
+        <tr>
+          <td><b>⑥ 하류<br>MAPK</b></td>
+          <td>기존 B-RAF/MEK 억제제 계열</td>
+          <td>이 논문이 시험하지는 않았습니다. 저자들은 오히려 <b>“MAPK 억제제는 간암에서 우회 경로 활성화 때문에 효과가 제한적”</b>이라고 적으며, 그래서 <b>더 위쪽(IQGAP1)</b>을 노렸다고 설명합니다.</td>
+          <td><span class="badge b-open">미시험</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="card gold">
+      <h4>이 표에서 배울 점 — 실패한 칸이 더 유익하다</h4>
+      ③과 ④는 <b>“안 되더라”</b>는 결과입니다. 용도변경 관점에서 보면 이게 오히려 중요합니다. 만약 이 논문이 없었다면, “KYNA가 나쁘다더라 → KYNA 수용체 막는 약을 찾자”로 갔을 겁니다. <b>그 길이 막혀 있다는 걸 미리 알려준 것</b>만으로도 값어치가 있습니다. <br><br>그리고 이 구조가 알려주는 더 큰 교훈 — <b>“몸 안의 물질을 줄인다”와 “미생물이 만드는 물질을 줄인다”는 전혀 다른 문제</b>입니다. 같은 KYNA라도 출처가 다르면 접근법이 완전히 달라집니다.
+    </div>
+
+    <h3>AI에게 이렇게 물어보세요 — 가능성 탐색 프롬프트</h3>
+    <div class="card">
+      <p style="margin-bottom:8px;">이 논문을 더 파보고 싶을 때, 이런 식으로 질문하면 깊이 들어갈 수 있습니다.</p>
+      <ul>
+        <li>“<i>Rhizopus</i> 속 곰팡이가 키뉴렌산을 합성하는 <b>효소 경로</b>에 대해 알려진 것이 있나? 어떤 논문을 봐야 하나?”</li>
+        <li>“<b>IQGAP1</b>을 표적으로 하는 물질 중 <b>이미 사람에게 쓰인 적 있는 약물</b>이 있나? 임상시험 단계는?”</li>
+        <li>“장내 <b>곰팡이</b> 구성을 사람에게서 실제로 바꿀 수 있다고 보고된 방법에는 어떤 것들이 있고, 각각 근거 수준은?”</li>
+        <li>“MASLD 환자에서 <b>혈중·대변 키뉴렌산</b>을 측정한 연구가 있나? 간암 발생과의 관계는?”</li>
+        <li>“이 논문의 생쥐 모델(HFHC 14개월)은 사람의 어떤 상황에 대응하나? <b>모델의 한계</b>는?”</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 8 ============ -->
+  <section>
+    <h2><span class="num">8</span>정직한 한계 — 이 논문이 말하지 않은 것</h2>
+
+    <h3>저자들이 직접 인정한 한계</h3>
+    <ul>
+      <li><b>사람 코호트가 단면(斷面)입니다.</b> 환자와 건강인을 한 시점에 비교한 것이라, <b>곰팡이가 먼저인지 병이 먼저인지</b> 알 수 없습니다. 저자들은 “더 크고 <b>장기 추적</b>하는 임상 코호트가 필요하다”고 적었습니다.</li>
+      <li><b>치료 효과는 미지수입니다.</b> “이 축을 약으로 조절하는 것이 MASLD-HCC 환자에게 치료적 이익을 줄 수 있는지는 아직 결정되지 않았다.”</li>
+    </ul>
+
+    <h3>읽는 사람이 더 짚어야 할 점</h3>
+    <ul>
+      <li><b>생쥐와 사람의 거리.</b> 14개월 특수 사료 생쥐 모델이 사람의 수십 년에 걸친 지방간–간암 과정을 얼마나 반영하는지는 늘 열린 질문입니다.</li>
+      <li><b>지방은 안 변했습니다.</b> <i>R. arrhizus</i>는 간의 지방 축적이나 중성지방에 영향이 없었습니다. 염증·섬유화·종양만 늘렸습니다. 즉 <b>“지방간을 악화시키는 경로”가 아니라 “암으로 넘어가는 길목을 미는 경로”</b>입니다.</li>
+      <li><b>사람 대변의 곰팡이 측정은 까다롭습니다.</b> 곰팡이는 장내 미생물 중 비율이 매우 작아서, 측정법·보관법에 따라 결과가 흔들리기 쉽습니다. 세 코호트에서 일관되게 나온 점은 강점이지만, 독립 연구실의 재현이 필요합니다.</li>
+      <li><b>“가장 많이 늘어난 것”이 꼭 “가장 중요한 것”은 아닙니다.</b> 20종의 곰팡이가 함께 움직였고, <i>Pseudozyma thailandica</i>도 같이 늘었습니다. 연구팀은 그중 하나를 골라 깊이 팠습니다 — 합리적인 선택이지만, 나머지는 아직 미지입니다.</li>
+    </ul>
+
+    <div class="card red">
+      <h4>잊지 말아야 할 전례 — 2024년 철회 사건</h4>
+      2020년 <i>Nature</i>에 “혈액 속 미생물로 33개 암종을 진단할 수 있다”는 논문이 실렸습니다(Poore 등). 2023년 다른 연구팀이 데이터 분석 오류를 지적했고, <b>2024년 6월 철회</b>됐습니다. 교훈은 명확합니다 — <b>“있다”를 넘어 “진단·인과”를 주장하는 순간, 검증의 문턱이 급격히 높아집니다.</b> 이번 논문이 생쥐 실험을 8단계나 쌓은 이유도 여기에 있습니다. 그리고 같은 이유로, <b>사람에 대한 주장은 아직 조심스럽게</b> 읽어야 합니다.
+    </div>
+  </section>
+
+  <!-- ============ 9 ============ -->
+  <section>
+    <h2><span class="num">9</span>그래서 다음은 무엇인가</h2>
+
+    <div class="grid2">
+      <div class="card">
+        <h4>① 시간 순서 확인</h4>
+        사람을 <b>여러 해 추적</b>하면서, 곰팡이와 KYNA가 <b>먼저 오르고</b> 암이 뒤따르는지 보는 연구. 이게 되면 “연관”이 “위험인자”가 됩니다.
+      </div>
+      <div class="card gold">
+        <h4>② 표지자로서의 KYNA</h4>
+        혈액이나 대변의 KYNA로 <b>고위험군을 미리 거를 수 있는지</b>. 측정이 비교적 쉬운 분자라는 점이 유리합니다.
+      </div>
+      <div class="card sage">
+        <h4>③ 곰팡이를 겨냥한 개입</h4>
+        장내 곰팡이 구성을 안전하게 바꾸는 방법. <i>Fusarium foetens</i>처럼 <b>좋은 곰팡이</b>를 쓰는 접근도 같은 선상에 있습니다.
+      </div>
+      <div class="card purple">
+        <h4>④ 다른 암으로의 확장</h4>
+        이미 <i>Candida</i>–대장암, <i>Malassezia</i>–췌장암, <i>Aspergillus</i>–폐암 보고가 있습니다. <b>“곰팡이–대사물–숙주 단백질”</b>이라는 틀이 암마다 반복될 가능성.
+      </div>
+    </div>
+
+    <div class="card">
+      <h4>우리 커뮤니티가 지켜볼 지점</h4>
+      이 논문이 보여준 설계 — <b>“미생물 한 종 → 대사물 하나 → 숙주 단백질 하나 → 끊으면 멈춤”</b> — 은 앞으로 쏟아질 연구들의 <b>표준 양식</b>이 될 가능성이 큽니다. 앞으로 비슷한 논문을 만나면, <b>이 네 칸이 다 채워져 있는지</b>를 보시면 됩니다. 네 칸 중 한두 개만 있으면 아직 “연관” 단계입니다.
+    </div>
+  </section>
+
+  <!-- ============ 10 ============ -->
+  <section>
+    <h2><span class="num">10</span>예상 질문 &amp; 답변</h2>
+
+    <div class="qa">
+      <div class="q">대변 검사로 이 곰팡이를 확인해볼 수 있나요?</div>
+      <div class="a">연구용 검사(메타게놈 시퀀싱, qPCR)로는 측정 가능합니다. 하지만 <b>임상적으로 해석할 기준이 아직 없습니다.</b> “수치가 얼마면 위험하다”는 선이 정해져 있지 않고, 측정법마다 값이 달라집니다. 지금 단계에서 숫자 하나를 받아도 그걸로 할 수 있는 판단이 없습니다.</div>
+
+      <div class="q">항진균제를 먹으면 예방이 되나요?</div>
+      <div class="a">이 논문은 그 질문에 답하지 않습니다. 논문의 항진균제는 <b>실험 조건을 맞추기 위한 전처리</b>였습니다. 게다가 전신 항진균제는 간 독성을 포함한 부작용이 있는 약입니다. <b>간 질환이 있는 분에게는 특히 그렇습니다.</b> 이 논문을 근거로 항진균제를 쓰는 것은 논리적으로 성립하지 않습니다.</div>
+
+      <div class="q">트립토판이 많은 음식을 피하면 되나요?</div>
+      <div class="a">논문의 결과가 바로 그 반대 방향을 가리킵니다. <b>숙주(사람)의 트립토판 → KYNA 경로를 통째로 막아도 효과가 사라지지 않았습니다.</b> 범인은 곰팡이가 자기 방식으로 만드는 KYNA입니다. 식이 트립토판을 줄이는 것으로 이 경로를 끊을 수 있다는 근거는 이 논문에 없습니다.</div>
+
+      <div class="q">식단이 영향을 주나요?</div>
+      <div class="a">사람 데이터에서는 <b>지중해식 식단 점수, 식물성 식단 지수, 케토제닉 점수 어느 것도 이 곰팡이의 양과 유의한 관계가 없었습니다</b>(모두 p&gt;0.05). 생쥐에서는 고지방·고콜레스테롤 사료가 전체 과정을 몰고 갔지만, 그게 곰팡이를 직접 늘린 것인지 병이 진행하면서 곰팡이가 늘어난 것인지는 분리되지 않았습니다.</div>
+
+      <div class="q">아커만시아가 줄었다니, 유산균이나 아커만시아를 보충하면 되나요?</div>
+      <div class="a">그 감소는 <b>곰팡이가 일으킨 결과</b>로 관찰된 것입니다. 결과를 되돌리는 것이 원인을 되돌리는 것과 같은지는 이 논문이 시험하지 않았습니다. 6장에서 말한 <b>“한 칸 거슬러 올라가기”</b>가 이 질문의 핵심입니다.</div>
+
+      <div class="q">간암이 아닌 다른 암에도 해당되나요?</div>
+      <div class="a">이 논문은 <b>지방간에서 비롯된 간암</b>에 한정됩니다. 다만 다른 암에서도 곰팡이 보고가 쌓이고 있습니다 — 대장암(<i>Candida albicans</i>), 췌장암(<i>Malassezia</i>), 폐 선암(<i>Aspergillus sydowii</i>). <b>곰팡이마다, 암마다 기전이 다릅니다.</b> 이 논문의 결론을 다른 암으로 옮겨 적용할 수는 없습니다.</div>
+
+      <div class="q">곰팡이는 다 나쁜 건가요?</div>
+      <div class="a">아닙니다. 같은 연구 흐름에서 <i>Fusarium foetens</i>는 지방간염을 <b>완화</b>시킨다고 2025년 <i>Science</i>에 보고됐습니다. 이번 논문에서도 효모(<i>S. cerevisiae</i>)를 먹인 대조군은 아무 변화가 없었습니다. <b>“곰팡이”가 아니라 “어떤 곰팡이인가”가 문제입니다.</b></div>
+
+      <div class="q">이 논문은 믿을 만한가요?</div>
+      <div class="a">저널(<i>Cell Metabolism</i>), 연구기관(홍콩중문대 소화기내과), 설계의 단계성, 9개월에 걸친 심사, 음성 대조군과 실패 실험까지 함께 보고한 점 — 모두 신뢰에 긍정적입니다. 이해관계 상충도 없다고 선언했습니다. <b>“생쥐에서 인과가 성립한다”까지는 잘 세웠습니다.</b> 다만 <b>“사람에서도 그렇다”는 아직 이 논문의 주장이 아닙니다.</b></div>
+    </div>
+  </section>
+
+  <!-- ============ 11 ============ -->
+  <section>
+    <h2><span class="num">11</span>용어 사전 &amp; 출처</h2>
+
+    <h3>용어</h3>
+    <table>
+      <thead><tr><th style="width:26%">용어</th><th>뜻</th></tr></thead>
+      <tbody>
+        <tr><td><b>MASLD</b></td><td>대사이상 관련 지방간질환 — 옛 이름 NAFLD(비알코올성 지방간)</td></tr>
+        <tr><td><b>MASH</b></td><td>지방간에 염증이 더해진 단계 — 옛 이름 NASH</td></tr>
+        <tr><td><b>HCC</b></td><td>간세포암 — 간에서 생기는 대표적 원발성 암</td></tr>
+        <tr><td><b>마이코바이옴</b></td><td>몸에 사는 곰팡이(진균) 전체 — 세균 쪽은 마이크로바이옴</td></tr>
+        <tr><td><b>KYNA (키뉴렌산)</b></td><td>트립토판에서 갈라져 나오는 작은 분자. 이 논문에서는 <b>곰팡이가 만든 것</b>이 문제</td></tr>
+        <tr><td><b>IQGAP1</b></td><td>세포 안의 <b>받침대 단백질</b>. 성장 신호를 전하는 일꾼들을 한자리에 모아둠</td></tr>
+        <tr><td><b>MAPK</b></td><td>세포 증식을 켜는 대표적 신호 경로 (B-RAF → MEK → ERK 순서)</td></tr>
+        <tr><td><b>간문맥</b></td><td>장에서 간으로 피를 바로 보내는 혈관 — 장의 물질이 간에 먼저 닿는 이유</td></tr>
+        <tr><td><b>FMT</b></td><td>대변 미생물 이식 — 한 개체의 장내 미생물을 다른 개체로 옮기는 실험</td></tr>
+        <tr><td><b>무균 생쥐</b></td><td>몸에 미생물이 전혀 없게 길러진 생쥐 — 미생물의 역할을 깨끗하게 보기 위한 도구</td></tr>
+        <tr><td><b>CRISPR 녹아웃</b></td><td>특정 유전자를 아예 없애는 기술 — “빼면 사라지나”를 확인하는 방법</td></tr>
+        <tr><td><b>K<sub>D</sub></b></td><td>결합 세기 지표 — 숫자가 <b>작을수록</b> 더 단단히 붙음</td></tr>
+        <tr><td><b>MDSC</b></td><td>골수유래 면역억제세포 — 늘어나면 항암 면역이 약해짐</td></tr>
+        <tr><td><b>AFP</b></td><td>알파태아단백 — 간암에서 흔히 오르는 혈액 표지자</td></tr>
+      </tbody>
+    </table>
+
+    <h3>주요 출처</h3>
+    <ul>
+      <li><b>본 논문</b>: Zhou X, et al. “Fungus <i>Rhizopus arrhizus</i> promotes MASLD-associated hepatocellular carcinoma through generating kynurenic acid.” <i>Cell Metabolism</i> 38, 2224–2238 (2026). DOI: 10.1016/j.cmet.2026.09.005 (Open Access, CC BY-NC)</li>
+      <li>원시 데이터: NCBI PRJNA1522117 (메타게놈·RNA 시퀀싱)</li>
+      <li>Mei J, et al. <i>Acta Pharmaceutica Sinica B</i> (2026). DOI: 10.1016/j.apsb.2026.09.033 — <b>우리의 10월 해설 「존재에서 관계로」 대상 논문</b></li>
+      <li>Nejman D, et al. <i>Science</i> 368, 973–980 (2020). DOI: 10.1126/science.aay9189 — 종양내 세균의 존재</li>
+      <li>Narunsky-Haziza L, et al. <i>Cell</i> (2022). PMID 36179670 — 종양내 진균</li>
+      <li>Zhou X, et al. <i>Science</i> 388, eadp5540 (2025) — <i>Fusarium foetens</i>가 지방간염을 완화 (좋은 곰팡이)</li>
+      <li>Zhang X, et al. <i>Gut</i> 70, 761–774 (2021) — 같은 연구팀의 선행 연구(식이 콜레스테롤과 지방간 관련 간암)</li>
+      <li>Poore GD, et al. <i>Nature</i> 579, 567–574 (2020) — <b>2024년 6월 철회</b> (Retraction Watch)</li>
+    </ul>
+
+    <div class="foot">
+      <b>⚠️ 정직하게 밝힙니다</b>
+      <ul>
+        <li>이 문서는 <b>일반인용 해설</b>이며, 논문 원문을 대체하지 않습니다.</li>
+        <li>모든 수치·기전은 <b>원문 본문 확인 결과</b>입니다. 해석과 비유는 해설자의 것입니다.</li>
+        <li>이 논문의 결과는 <b>생쥐와 세포 실험</b>이 중심입니다. 사람에서 검증된 치료법이 아닙니다.</li>
+        <li><b>의료 조언이 아닙니다.</b> 약물·보충제·검사에 관한 결정은 반드시 주치의와 상의하십시오. 특히 간 질환이 있는 경우 약물 선택은 더 신중해야 합니다.</li>
+      </ul>
+      <b>작성일</b> 2026-11-08 · <b>형식</b> 단일 HTML (외부 의존 0) · <b>연작</b> 「종양내 미생물 — 존재에서 관계로」(2026-10-12) 후속편
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
