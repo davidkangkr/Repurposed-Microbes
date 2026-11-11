@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>지속성 치료 후 숙주 면역 개조 — 방법론 노트</title>
+<meta name="description" content="Xue et al. 2026 리뷰의 방법론적 재구성: 숙주 허용도를 종양 부담과 독립된 재발 위험 축으로 다루는 틀과 그 한계.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700&family=Noto+Sans+KR:wght@300;400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0E1116;
+    --bg-2:#151A21;
+    --bg-3:#1C222B;
+    --line:#2A323D;
+    --txt:#D7DEE7;
+    --txt-dim:#8E9AA8;
+    --cyan:#4CC9D4;      /* 기전 */
+    --amber:#E0A95C;     /* 근거 */
+    --violet:#A98BE8;    /* 도구·측정 */
+    --rose:#E07B82;      /* 한계·경계 */
+    --cyan-bg:rgba(76,201,212,.08);
+    --amber-bg:rgba(224,169,92,.08);
+    --violet-bg:rgba(169,139,232,.08);
+    --rose-bg:rgba(224,123,130,.08);
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;background:var(--bg);color:var(--txt);
+    font-family:'Noto Sans KR',sans-serif;font-size:16.5px;line-height:1.85;
+    font-weight:300;letter-spacing:-0.005em;
+  }
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px 100px;}
+  h1,h2,h3{font-family:'Noto Serif KR',serif;font-weight:700;line-height:1.45;letter-spacing:-0.02em;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+
+  /* header */
+  header{padding:76px 0 40px;border-bottom:1px solid var(--line);margin-bottom:54px;}
+  .kicker{font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.14em;color:var(--cyan);margin:0 0 20px;text-transform:uppercase;}
+  h1{font-size:33px;margin:0 0 20px;color:#F0F4F9;}
+  .srcline{font-size:14.5px;color:var(--txt-dim);line-height:1.8;}
+  .srcline a{color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(76,201,212,.35);}
+
+  /* thesis */
+  .thesis{
+    border:1px solid var(--cyan);background:var(--cyan-bg);
+    border-radius:4px;padding:30px 30px 14px;margin:0 0 20px;
+  }
+  .thesis .lab{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.16em;color:var(--cyan);margin-bottom:14px;}
+  .thesis p{font-family:'Noto Serif KR',serif;font-size:21px;line-height:1.8;color:#F0F4F9;margin:0 0 18px;font-weight:500;}
+  .thesis p.sub{font-family:'Noto Sans KR',sans-serif;font-size:16px;color:var(--txt-dim);font-weight:300;}
+
+  /* sections */
+  section{margin:0 0 56px;scroll-margin-top:20px;}
+  h2{font-size:24px;margin:0 0 8px;color:#F0F4F9;}
+  .sidx{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;color:var(--txt-dim);display:block;margin-bottom:10px;}
+  h3{font-size:18px;margin:30px 0 10px;color:#E6ECF3;}
+  p{margin:0 0 18px;}
+  em{color:var(--cyan);font-style:normal;}
+  strong{font-weight:500;color:#F0F4F9;}
+
+  /* toc */
+  nav.toc{border:1px solid var(--line);border-radius:4px;padding:22px 24px;margin-bottom:54px;background:var(--bg-2);}
+  nav.toc ol{margin:0;padding-left:0;list-style:none;columns:2;column-gap:28px;}
+  nav.toc li{font-family:'JetBrains Mono',monospace;font-size:13px;margin-bottom:9px;break-inside:avoid;}
+  nav.toc a{color:var(--txt-dim);text-decoration:none;}
+  nav.toc a:hover{color:var(--cyan);}
+
+  /* tables */
+  .tw{overflow-x:auto;margin:24px 0;-webkit-overflow-scrolling:touch;}
+  table{border-collapse:collapse;width:100%;min-width:560px;font-size:14.5px;}
+  th,td{border:1px solid var(--line);padding:11px 13px;text-align:left;vertical-align:top;line-height:1.7;}
+  th{background:var(--bg-3);font-weight:500;color:#E6ECF3;font-size:13.5px;}
+  td{color:var(--txt-dim);}
+  td b{color:var(--txt);font-weight:500;}
+
+  /* rails */
+  .rail{list-style:none;padding:0;margin:26px 0;position:relative;}
+  .rail::before{content:"";position:absolute;left:17px;top:10px;bottom:10px;width:1px;background:var(--line);}
+  .rail li{position:relative;padding:0 0 26px 52px;}
+  .rail li .dot{
+    position:absolute;left:8px;top:4px;width:19px;height:19px;border-radius:50%;
+    background:var(--bg);border:2px solid var(--cyan);
+  }
+  .rail li.hot .dot{background:var(--amber);border-color:var(--amber);box-shadow:0 0 0 5px rgba(224,169,92,.14);}
+  .rail li b{display:block;font-size:17px;color:#E6ECF3;font-weight:500;margin-bottom:4px;}
+  .rail li .ph{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.12em;color:var(--txt-dim);display:block;margin-bottom:3px;}
+  .rail li p{margin:0;font-size:15.5px;color:var(--txt-dim);}
+
+  /* callouts */
+  .note{border-left:2px solid;border-radius:0 4px 4px 0;padding:20px 22px 6px;margin:24px 0;}
+  .note .lab{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;margin-bottom:10px;display:block;}
+  .note.cyan{border-color:var(--cyan);background:var(--cyan-bg);} .note.cyan .lab{color:var(--cyan);}
+  .note.amber{border-color:var(--amber);background:var(--amber-bg);} .note.amber .lab{color:var(--amber);}
+  .note.violet{border-color:var(--violet);background:var(--violet-bg);} .note.violet .lab{color:var(--violet);}
+  .note.rose{border-color:var(--rose);background:var(--rose-bg);} .note.rose .lab{color:var(--rose);}
+  .note p{font-size:15.5px;}
+
+  /* compartment cards */
+  .comp{border:1px solid var(--line);border-radius:4px;margin-bottom:12px;background:var(--bg-2);}
+  .comp .hd{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;}
+  .comp .hd b{font-size:16.5px;color:#E6ECF3;font-weight:500;}
+  .comp .hd span{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--txt-dim);}
+  .comp .bd{padding:14px 18px;font-size:15px;color:var(--txt-dim);}
+  .comp .bd div{margin-bottom:8px;}
+  .comp .bd div:last-child{margin-bottom:0;}
+  .comp .bd .k{
+    font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;
+    display:inline-block;min-width:92px;color:var(--violet);
+  }
+  .comp .bd .k.m{color:var(--cyan);} .comp .bd .k.e{color:var(--amber);}
+
+  /* matrix */
+  .matrix{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:26px 0;}
+  .cell{border:1px solid var(--line);border-radius:4px;padding:18px;background:var(--bg-2);}
+  .cell .q{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;margin-bottom:9px;}
+  .cell b{display:block;font-size:15.5px;color:#E6ECF3;font-weight:500;margin-bottom:6px;}
+  .cell p{font-size:14.5px;color:var(--txt-dim);margin:0;line-height:1.75;}
+  .cell.c1{border-color:rgba(76,201,212,.4);} .cell.c1 .q{color:var(--cyan);}
+  .cell.c2{border-color:rgba(224,169,92,.4);} .cell.c2 .q{color:var(--amber);}
+  .cell.c3{border-color:rgba(169,139,232,.4);} .cell.c3 .q{color:var(--violet);}
+  .cell.c4{border-color:rgba(224,123,130,.5);} .cell.c4 .q{color:var(--rose);}
+  .axes{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--txt-dim);margin:0 0 12px;line-height:1.8;}
+
+  /* evidence grade */
+  .grade{display:flex;gap:12px;align-items:flex-start;border-bottom:1px solid var(--line);padding:14px 0;}
+  .grade:last-child{border-bottom:none;}
+  .grade .g{
+    font-family:'JetBrains Mono',monospace;font-weight:700;font-size:15px;
+    width:28px;height:28px;border-radius:3px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;margin-top:2px;
+  }
+  .g.a{background:rgba(76,201,212,.18);color:var(--cyan);}
+  .g.b{background:rgba(224,169,92,.18);color:var(--amber);}
+  .g.c{background:rgba(169,139,232,.18);color:var(--violet);}
+  .g.d{background:rgba(224,123,130,.18);color:var(--rose);}
+  .grade .t{font-size:15px;color:var(--txt-dim);line-height:1.75;}
+  .grade .t b{display:block;color:var(--txt);font-weight:500;margin-bottom:2px;font-size:15.5px;}
+
+  ul.plain{padding-left:20px;margin:0 0 18px;}
+  ul.plain li{margin-bottom:9px;color:var(--txt-dim);font-size:15.5px;}
+  ul.plain li b{color:var(--txt);font-weight:500;}
+
+  .refs{font-size:14px;color:var(--txt-dim);border-top:1px dotted var(--line);margin-top:18px;padding-top:14px;line-height:1.8;}
+  .refs b{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:var(--txt-dim);display:block;margin-bottom:7px;}
+  .refs a{color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(76,201,212,.25);}
+
+  footer{border-top:1px solid var(--line);padding-top:28px;font-size:14px;color:var(--txt-dim);line-height:1.85;}
+  footer a{color:var(--cyan);}
+
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease;}
+  .reveal.on{opacity:1;transform:none;}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1!important;transform:none!important;transition:none!important;}
+  }
+  a:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;}
+
+  @media (max-width:640px){
+    body{font-size:16px;}
+    h1{font-size:26px;} h2{font-size:21px;}
+    .thesis{padding:22px 20px 8px;} .thesis p{font-size:18.5px;}
+    nav.toc ol{columns:1;}
+    .matrix{grid-template-columns:1fr;}
+    .wrap{padding:0 18px 80px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="kicker">Methodology Note · Register B · 2026-11-12</p>
+  <h1>지속성 치료 후 숙주 면역 개조<br><span style="font-size:19px;font-weight:500;color:var(--txt-dim);">Persistent post-treatment host immune remodeling</span></h1>
+  <p class="srcline">
+    원전: Xue J, Zhang L, Ning C, et al. <i>Persistent post-treatment host immune remodeling in cancer: linking therapy to minimal residual disease, relapse, and treatment rechallenge.</i> Front Immunol. 2026;17:1992385. ·
+    <a href="https://doi.org/10.3389/fimmu.2026.1992385">doi:10.3389/fimmu.2026.1992385</a> · CC BY<br>
+    본 문서는 원전을 커뮤니티 방법론 관점에서 재구성한 2차 문서입니다. 원문 도식은 복제하지 않고 전부 새로 작도했습니다.
+  </p>
+</header>
+
+<div class="thesis">
+  <div class="lab">THESIS</div>
+  <p>재발 위험은 <em>잔존 종양 부담(residual tumor burden)</em>과 <em>숙주 허용도(host permissiveness)</em>라는 두 개의 독립된 축으로 측정되어야 한다. ctDNA는 전자만을 말한다.</p>
+  <p class="sub">이 리뷰의 기여는 새로운 기전의 발견이 아니다. "치료가 숙주를 바꾼다"는 이미 알려진 사실에, <b>시간적·기능적 경계</b>를 부여해 측정 가능한 단위로 만든 것이다. 그리고 그 결과로, 우리가 지금껏 측정하지 않아 온 축 하나가 드러난다.</p>
+</div>
+
+<nav class="toc">
+  <ol>
+    <li><a href="#s02">02 — 패러다임 대비</a></li>
+    <li><a href="#s03">03 — 조작적 정의 5기준</a></li>
+    <li><a href="#s04">04 — 4단계 레일</a></li>
+    <li><a href="#s05">05 — 7구획 아키텍처</a></li>
+    <li><a href="#s06">06 — 핵심 기전 3선</a></li>
+    <li><a href="#s07">07 — MRD 2×2 매트릭스</a></li>
+    <li><a href="#s08">08 — 모달리티별 궤적</a></li>
+    <li><a href="#s09">09 — 측정 설계</a></li>
+    <li><a href="#s10">10 — 개입 4전략</a></li>
+    <li><a href="#s11">11 — 근거 등급</a></li>
+    <li><a href="#s12">12 — 흔한 함정</a></li>
+    <li><a href="#s13">13 — 구조적 한계</a></li>
+    <li><a href="#s14">14 — 커뮤니티 적용</a></li>
+    <li><a href="#s15">15 — 클로징</a></li>
+  </ol>
+</nav>
+
+<section id="s02" class="reveal">
+  <h2><span class="sidx">02 / PARADIGM</span>무엇이 재정의되었는가</h2>
+
+  <p>치료내성 모델의 기본 단위는 오랫동안 <strong>암세포</strong>였다. 약물 압력이 내성 클론을 선택하고, drug-tolerant persister가 초기 노출과 후기 재발을 잇는다. 이 모델은 필요하지만 불완전하다. 항암치료는 전신 교란이기 때문이다. 세포독성 항암제는 증식 중인 정상조직을 손상시키고, 방사선은 혈관·기질·골수·면역 구획을 바꾸며, 수술은 창상치유·응고·신경내분비 프로그램을 가동시킨다.</p>
+
+  <p>이 리뷰의 조작 단위는 <em>비악성 숙주 구획</em>이다. 암세포가 아니라 <strong>치료가 끝난 뒤 남은 몸</strong>이 분석 대상이다. 따라서 "치료 후의 암"은 암세포 수가 줄어든 치료 전의 병이 아니라, <strong>생물학적으로 개조된 숙주 안에 놓인 잔존질환</strong>으로 재정의된다.</p>
+
+  <h3>인접 프레임과의 경계</h3>
+  <div class="tw">
+  <table>
+    <thead><tr><th>프레임</th><th>1차 단위</th><th>시간 초점</th><th>이 리뷰가 메우는 공백</th></tr></thead>
+    <tbody>
+      <tr><td><b>Treatment-induced host response</b></td><td>치료로 활성화된 숙주 세포·가용성 인자</td><td>치료 중, 초기 회복</td><td>급성 회복 이후의 지속성과 MRD·재도전과의 연결을 요구하지 않음</td></tr>
+      <tr><td><b>Multi-scale cancer ecosystem</b></td><td>종양·국소 니치·전신 생리</td><td>전 병기</td><td>특정 치료 노출이나 임상 의사결정 창에 고정되어 있지 않음</td></tr>
+      <tr><td><b>Tumor dormancy ecosystem</b></td><td>휴면 암세포와 미세·거대환경</td><td>잠복–각성–재발</td><td>치료유발 상태에 국한되지 않고, 재도전의 맥락이 중심이 아님</td></tr>
+      <tr><td><b>Therapy-persistent residual disease</b></td><td>살아남은 악성세포, persister 프로그램</td><td>치료 후–명백한 재발 전</td><td>비악성 숙주 상태가 1차 단위가 아님</td></tr>
+      <tr><td><b>Therapy-induced immunoediting</b></td><td>면역 선택압 하의 잔존 악성집단</td><td>치료 중–잔존 평형–2차 면역회피</td><td>급성 회복 후의 전신 비악성 개조를 독립 측정 가능한 결정인자로 조작화하지 않음</td></tr>
+      <tr><td><b>Therapy-conditioned host</b></td><td>생존자의 정상·전암 조직</td><td>장기 생존, 2차 원발암</td><td>지표암의 MRD·휴면·재발·재도전을 주로 다루지 않음</td></tr>
+      <tr><td style="color:var(--cyan)"><b>Persistent post-treatment host state</b> (본 리뷰)</td><td>치료연관 비악성 다구획 상태</td><td>급성 회복 후–MRD–재도전</td><td>지속성·인과성·국소화·측정·가역성·순서를 하나로 통합</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note cyan">
+    <span class="lab">AI 클로드 주석</span>
+    <p>표의 마지막 줄이 이 논문의 전부다. 앞의 여섯 줄은 모두 이미 존재하던 틀이고, 저자들도 "생태계 개념이나 숙주 반응이 새롭다고 주장하지 않는다"고 명시한다. 새로운 것은 <b>경계선</b>이다. 경계가 생기면 비로소 측정 대상이 생기고, 측정 대상이 생기면 비로소 시험이 설계된다. 우리 커뮤니티 입장에서 이 논문의 실질적 가치도 거기에 있다 — 막연한 "몸 관리"를 <b>반증 가능한 질문</b>으로 바꿔 준다.</p>
+  </div>
+</section>
+
+<section id="s03" class="reveal">
+  <h2><span class="sidx">03 / CRITERIA</span>조작적 정의 — 5기준과 검증 게이트</h2>
+
+  <p>어떤 치료 후 변화를 "지속성 숙주 상태"로 부르려면 다음 다섯 가지를 만족해야 한다. 이 기준이 없으면 개념은 모든 전신 암 효과를 담는 우산이 되어 버린다.</p>
+
+  <div class="tw">
+  <table>
+    <thead><tr><th>기준</th><th>요구 조건</th><th>검증 게이트</th></tr></thead>
+    <tbody>
+      <tr><td><b>① 노출 연관<br>Exposure linkage</b></td><td>특정 항암 중재에 의해 유발·증폭되며, 치료받지 않은 종양 보유 상태와 구별됨</td><td>치료 전 기준선 비교군 필수</td></tr>
+      <tr><td><b>② 숙주 국소화<br>Host localization</b></td><td>주된 측정 변화가 비악성 세포·장기·순환인자·전신 생리에서 일어남</td><td>종양 유래 신호와 분리 측정</td></tr>
+      <tr><td><b>③ 시간적 지속<br>Temporal persistence</b></td><td>약물 노출과 급성 조직손상을 넘어 검출됨 (모달리티별 적절 간격)</td><td>종단 샘플링, 단면 불가</td></tr>
+      <tr><td><b>④ 기능적 결과<br>Functional consequence</b></td><td>그 상태를 교란하면 잔존세포 생존·휴면·재발·전이·후속치료 반응이 바뀜</td><td>구획 특이적 인과 개입</td></tr>
+      <tr><td><b>⑤ 측정·가역성</b></td><td>바이오마커로 추적 가능하고, 임상적으로 타당한 방법으로 예방·억제·리셋 가능</td><td>개입이 지표를 넘어 결과를 바꿔야 함</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note rose">
+    <span class="lab">LIMIT — 반드시 인용되어야 할 문장</span>
+    <p>저자들 자신의 서술: <b>현재 이 다섯 기준을 모두 충족하는 연구는 거의 없다.</b> 많은 보고가 노출연관 변화와 치료 결과의 연관은 보이지만 종단 지속성 데이터나 인과적 개입이 없고, 일부 전임상 연구는 인과성을 보이지만 같은 숙주 상태가 환자에게도 존재하는지 보이지 못한다.</p>
+    <p>즉 이 프레임은 <b>지금 적용할 지침이 아니라, 앞으로 채워야 할 빈칸의 목록</b>이다.</p>
+  </div>
+
+  <p>정의에서 <strong>명시적으로 배제되는 것</strong>도 세 가지다 — (가) 직접적 종양세포 적응, (나) 약물 제거와 함께 사라지는 단기 약력학적 변화, (다) 잔존 종양 통제나 후속 치료 효능을 기전적으로 바꾸지 않는 단순 독성.</p>
+</section>
+
+<section id="s04" class="reveal">
+  <h2><span class="sidx">04 / TIMELINE</span>4단계 모델</h2>
+
+  <ul class="rail">
+    <li><span class="dot"></span><span class="ph">PHASE I · 분~일</span><b>급성 숙주 교란 (acute host perturbation)</b>
+      <p>모달리티·조직 특이적 손상. 조혈전구세포와 장 음와 상피 손상, 점막염, 미생물 전위, 조사야 내 산화스트레스, 내피 활성화, 창상치유·응고·신경내분비 반응. DAMP(HMGB1, ATP, 핵산, ECM 단편)가 선천면역 센싱을 켠다.
+      <br><br>주의: <b>이 단계를 친종양/항종양으로 이름 붙일 수 없다.</b> Type I interferon은 펄스로 주어지면 교차프라이밍을 돕고 만성화되면 기능장애를 부른다. 호중구는 잔해를 치우면서 동시에 NET으로 잠재형 TGF-β를 활성화한다.</p></li>
+
+    <li><span class="dot"></span><span class="ph">PHASE II · 일~주</span><b>보상적 회복 (compensatory repair)</b>
+      <p>응급 골수생성(emergency myelopoiesis), 섬유아세포의 ECM 침착, 내피 복구, 장상피 재생, 대사·내분비 재조정. <b>생물학적으로 필요한 단계다.</b> 다만 IL-6–STAT3, TGF-β, CXCL12–CXCR4, VEGF, CSF-1, 프로스타글란딘 등 회복 경로가 조건에 따라 종양 지지적으로 작동할 수 있다.
+      <br><br>또한 치료 시작 시점의 숙주는 이미 정상이 아니다(종양 유래 IL-4의 골수 재프로그래밍 등). 치료는 <b>이미 조건화된 기질 위에서</b> 작동한다.</p></li>
+
+    <li class="hot"><span class="dot"></span><span class="ph">PHASE III · 개입 창</span><b>숙주 상태 고착 (host-state consolidation)</b>
+      <p>대부분의 급성 반응은 해소되지만 일부는 지속 세포군·개조된 조직 구조·자기강화 염증 피드백을 통해 고착된다. 노화 기질세포의 SASP, 섬유화, 내피 기능장애, 미생물·대사 변화, 치료가 선택한 클론성 조혈.
+      <br><br><b>이 시기가 재발 차단(relapse interception)의 가장 실행 가능한 창이다.</b> 종양 부담은 낮고, 허용적 상태는 영상 진행 전에 이미 검출될 수 있다. 그리고 이때 필요한 개입은 또 하나의 세포독성 항암제가 아닐 수 있다.</p></li>
+
+    <li><span class="dot"></span><span class="ph">PHASE IV · 갈림길</span><b>잔존질환의 운명 / 치료 재도전</b>
+      <p>잔존 암세포가 고착된 숙주 상태를 만난다. 가능한 결과는 넷 — 면역 제거 / 안정적 휴면 / 간헐적 각성 / 지속적 증식. 동시에 다음 치료의 반응성도 여기서 영향을 받는다.
+      <br><br>함의: <b>이전 치료는 병력의 한 줄이 아니라 생물학적 공변량(biological covariate)일 수 있다.</b> 단, 지속성 숙주 상태가 재도전 결과를 독립적으로 예측한다는 직접 근거는 아직 제한적이다.</p></li>
+  </ul>
+</section>
+
+<section id="s05" class="reveal">
+  <h2><span class="sidx">05 / ARCHITECTURE</span>7개 구획</h2>
+
+  <p>숙주 상태는 국소 종양미세환경(TME)으로 환원되지 않는다. 해부학적으로 분산되어 있으나, 조혈 산출·면역세포 이동·염증 신호·조직 접근성이라는 공통 출력으로 수렴한다. <strong>모든 환자에게 7개가 다 이상해야 하는 것은 아니며, 이 프레임은 환자별 지속 모듈의 조합을 예측한다.</strong></p>
+
+  <div class="comp">
+    <div class="hd"><b>① 골수 / 비장</b><span>bone marrow · spleen</span></div>
+    <div class="bd">
+      <div><span class="k m">기전</span>응급 골수생성, 전구세포 주기 변화, 골수계 편향, 수질외 조혈</div>
+      <div><span class="k e">영향</span>면역억제, NET 형성, 항원제시 변화</div>
+      <div><span class="k">측정</span>HSPC·골수계 단일세포 상태, CBC/NLR, 사이토카인, 골수 영상</div>
+      <div><span class="k">가설적 개입</span>IL-1/CSF 축 조절, 골수계 재프로그래밍, 스케줄 변경</div>
+    </div>
+  </div>
+
+  <div class="comp">
+    <div class="hd"><b>② 노화 기질</b><span>senescent stroma · SASP</span></div>
+    <div class="bd">
+      <div><span class="k m">기전</span>섬유아세포·내피 노화 지속, SASP 분비</div>
+      <div><span class="k e">영향</span>휴면세포 각성, 면역 배제, 기질 개조</div>
+      <div><span class="k">측정</span>노화연관 단백질, 조직 p16/p21, EV cargo, 공간전사체</div>
+      <div><span class="k">가설적 개입</span><b>타이밍을 맞춘</b> senolytic / senomorphic</div>
+    </div>
+  </div>
+
+  <div class="comp">
+    <div class="hd"><b>③ 내피 / 응고</b><span>endothelium · coagulation</span></div>
+    <div class="bd">
+      <div><span class="k m">기전</span>투과성 변화, angiocrine SDF1, 혈전, 백혈구 이동 장애</div>
+      <div><span class="k e">영향</span>면역 회피, 순환·잔존 세포 보호</div>
+      <div><span class="k">측정</span>Angiopoietin-2, vWF, D-dimer, 관류 영상, 순환 내피세포</div>
+      <div><span class="k">가설적 개입</span>혈관 정상화, 경로 특이적 angiocrine 차단, 항혈전 전략</div>
+    </div>
+  </div>
+
+  <div class="comp">
+    <div class="hd"><b>④ 세포외기질</b><span>extracellular matrix</span></div>
+    <div class="bd">
+      <div><span class="k m">기전</span>섬유화, 콜라겐 개조, 잠재형 TGF-β 방출, 경직도 변화</div>
+      <div><span class="k e">영향</span>휴면 탈출, 물리적 약물저항, 면역 배제</div>
+      <div><span class="k">측정</span>기질 단편, 탄성초음파, 콜라겐 영상, 공간 단백체</div>
+      <div><span class="k">가설적 개입</span>항섬유화·기질 개조 치료, NET 억제</div>
+    </div>
+  </div>
+
+  <div class="comp">
+    <div class="hd"><b>⑤ 장 / 미생물</b><span>gut · microbiome</span></div>
+    <div class="bd">
+      <div><span class="k m">기전</span>이상세균총, 장벽 손상, 미생물 대사체 변화</div>
+      <div><span class="k e">영향</span>전신 면역 톤 변화, 면역관문억제제(ICI) 반응성 변화</div>
+      <div><span class="k">측정</span>대변 메타게놈, 단쇄지방산(SCFA), 장벽 지표, 항생제 노출력</div>
+      <div><span class="k">가설적 개입</span>식이 중재, 정의된 컨소시엄, 선택적 상황에서 FMT</div>
+    </div>
+  </div>
+
+  <div class="comp">
+    <div class="hd"><b>⑥ 대사 / 내분비</b><span>metabolic · endocrine</span></div>
+    <div class="bd">
+      <div><span class="k m">기전</span>근육 소실, 지방 염증, 인슐린 저항성, 글루코코르티코이드 노출</div>
+      <div><span class="k e">영향</span>면역 적합도 저하, 약동학 변화, 영양적 지지</div>
+      <div><span class="k">측정</span>체성분, 근력, 대사체, 당·지질 프로파일</div>
+      <div><span class="k">가설적 개입</span>운동·영양, 내분비 교정, 항악액질 치료</div>
+    </div>
+  </div>
+
+  <div class="comp">
+    <div class="hd"><b>⑦ 신경면역 스트레스 회로 · ⑧ 클론성 조혈</b><span>neuroimmune · clonal hematopoiesis (CH)</span></div>
+    <div class="bd">
+      <div><span class="k m">기전</span>교감신경·HPA 축 활성, 수면·일주기 교란 / DNMT3A·TET2·PPM1D·TP53 변이 클론의 치료 선택적 확장</div>
+      <div><span class="k e">영향</span>골수계 동원, 염증성 각성 / 유전자 특이적 염증·면역 효과, 독성 변화</div>
+      <div><span class="k">측정</span>코티솔·카테콜아민, HRV, 수면·활동량 / 오류보정 혈액 시퀀싱, 클론 동역학</div>
+      <div><span class="k">가설적 개입</span>수술전후 스트레스 조절, 수면 회복 / 위험 적응적 치료 선택</div>
+    </div>
+  </div>
+
+  <div class="note amber">
+    <span class="lab">EVIDENCE NOTE (원전 Table 2 주석의 취지)</span>
+    <p>위의 암종·근거는 <b>예시적이며 망라적이지 않다.</b> 인용된 연구들은 치료연관 실험 기전, 종양연관 숙주 변화, 임상적 연관, 숙주 지향 개입을 모두 포함하는데, <b>모든 연구가 치료 종료 후 지속성을 입증하거나 MRD에 대한 인과 효과를 확립한 것은 아니다.</b></p>
+  </div>
+</section>
+
+<section id="s06" class="reveal">
+  <h2><span class="sidx">06 / MECHANISM</span>핵심 기전 3선</h2>
+
+  <p>프레임 전체는 가설이지만, 그 안에 들어 있는 개별 기전 중 일부는 구체적 실험 증거를 갖는다. "숙주가 치료의 기억을 간직한다"는 주장을 가장 선명하게 보여주는 셋을 고른다.</p>
+
+  <h3>① 항암제 유발 노화 섬유아세포 → NET → 휴면세포 각성</h3>
+  <p>폐에서 항암제로 유도된 노화 섬유아세포가 호중구에 신호를 보내 세포외덫(NET, neutrophil extracellular trap)을 유도하고, ECM을 개조하며, 파종된 휴면 유방암세포를 깨운다. <strong>치료가 남긴 비악성 세포가, 치료가 끝난 뒤에 암세포를 깨우는 경로</strong>다.</p>
+
+  <h3>② 내피 PARP1–MLKL → SDF1 angiocrine niche → 면역 회피</h3>
+  <p>항암제가 종양 내피세포에서 PARP1 의존적 MLKL 변형을 일으켜 necroptotic 신호를 켜고, SDF1을 증가시켜 CXCL10 양성 대식세포와 CXCR3 양성 CD8 T세포의 협력을 끊는다. <strong>비악성 구획이 치료의 기억을 보존하고 이후의 면역 상호작용을 재지정한다</strong>는 기전적 예시.</p>
+
+  <h3>③ 수술의 전신 반응 → 원격 휴면종양의 증식</h3>
+  <p>휴면 마우스 모델에서, 수술에 대한 전신 반응이 면역 통제 하에 있던 원격 종양의 증식을 유발했다. 국소 처치가 전신 숙주 상태를 통해 <strong>떨어진 곳의 결과를 바꾼다</strong>는 가장 직관적인 증거.</p>
+
+  <div class="note violet">
+    <span class="lab">왜 이 셋인가</span>
+    <p>세 기전 모두 <b>"암세포가 변했다"로는 설명되지 않는다.</b> 바꾼 쪽은 섬유아세포, 내피세포, 전신 창상치유 반응이다. 숙주를 독립 변수로 놓아야만 보이는 현상이라는 점에서, 프레임의 존재 이유를 증명한다. 다만 ①②는 전임상, ③도 마우스 모델이다 — 근거 등급 D.</p>
+  </div>
+
+  <div class="refs">
+    <b>SOURCES</b>
+    ① He D, Wu Q, Tian P, et al. Chemotherapy awakens dormant cancer cells in lung by inducing neutrophil extracellular traps. <i>Cancer Cell.</i> 2025;43:1622–1636.e7. <a href="https://doi.org/10.1016/j.ccell.2025.06.007">doi:10.1016/j.ccell.2025.06.007</a><br>
+    ② Yang N, Li X, Huang W, et al. MLKL PARylation in the endothelial niche triggers angiocrine necroptosis to evade cancer immunosurveillance and chemotherapy. <i>Nat Cell Biol.</i> 2025;27:1526–42. <a href="https://doi.org/10.1038/s41556-025-01740-8">doi:10.1038/s41556-025-01740-8</a><br>
+    ③ Krall JA, Reinhardt F, Mercury OA, et al. The systemic response to surgery triggers the outgrowth of distant immune-controlled tumors in mouse models of dormancy. <i>Sci Transl Med.</i> 2018;10:eaan3464. <a href="https://doi.org/10.1126/scitranslmed.aan3464">doi:10.1126/scitranslmed.aan3464</a>
+  </div>
+</section>
+
+<section id="s07" class="reveal">
+  <h2><span class="sidx">07 / MATRIX</span>MRD의 2×2 — 이 문서의 핵심 도형</h2>
+
+  <p>현재 MRD 평가는 거의 전적으로 종양 유래 신호(ctDNA, CTC, 영상 잔존 병변)에 의존한다. 이 리뷰의 제안은 여기에 직교하는 축 하나를 추가하는 것이다.</p>
+
+  <p class="axes">
+    X축 — 종양 부담 바이오마커: ctDNA / CTC / 영상 잔존 병변<br>
+    Y축 — 숙주 허용도 바이오마커: 골수계 시그니처 · SASP 인자 · NET 마커 · 미생물총 다양성 · 염증·대사 지표
+  </p>
+
+  <div class="matrix">
+    <div class="cell c1">
+      <div class="q">ctDNA (−) · 숙주 허용도 낮음</div>
+      <b>일치하는 분자·면역학적 관해</b>
+      <p>종양 신호도 없고 숙주도 비허용적. 추적 간격 연장을 검토할 수 있는 군. 현재 체계에서도 가장 잘 포착되는 상태.</p>
+    </div>
+    <div class="cell c2">
+      <div class="q">ctDNA (+) · 숙주 허용도 낮음</div>
+      <b>효과적 면역 제약 하의 잔존질환</b>
+      <p>씨앗은 있으나 땅이 막고 있는 상태. 즉시 세포독성 강화가 최선인지, 휴면 유지가 더 안전한지가 갈리는 지점. <b>현재 가장 판단이 어려운 칸.</b></p>
+    </div>
+    <div class="cell c3">
+      <div class="q">ctDNA (−) · 숙주 허용도 높음</div>
+      <b>재발 허용적 숙주, 종양 신호 없음</b>
+      <p>현행 추적에서 <b>완전히 놓치는 칸.</b> "깨끗하다"로 분류되지만 땅은 준비되어 있다. 이 리뷰가 존재해야 하는 이유가 바로 이 칸이다.</p>
+    </div>
+    <div class="cell c4">
+      <div class="q">ctDNA (+) · 숙주 허용도 높음</div>
+      <b>면역 허용적 숙주 내 잔존질환</b>
+      <p>가장 고위험. 종양 지향 치료와 숙주 지향 개입을 함께 고려할 후보군. 단, 조합 전략의 임상 근거는 아직 없음.</p>
+    </div>
+  </div>
+
+  <div class="note amber">
+    <span class="lab">원전의 조건화</span>
+    <p>저자들의 표현 그대로: 종양 부담과 숙주 허용도는 <b>"서로 구별되지만 상호보완적일 수 있는(distinct but potentially complementary)" 재발 위험의 차원</b>이며, 이 둘을 결합했을 때의 <b>추가 예측 가치는 전향적 임상 검증을 필요로 한다.</b> 2×2는 검증된 분류체계가 아니라 <b>시험 설계용 좌표계</b>다.</p>
+  </div>
+
+  <div class="note cyan">
+    <span class="lab">AI 클로드 주석</span>
+    <p>세 번째 칸(ctDNA−, 허용도 높음)이 이 논문이 커뮤니티에 주는 실질적 선물이다. "검사는 깨끗한데 몸이 이상하다"는 회원들의 호소가, 지금까지는 설명 틀이 없어서 심리적 문제로 분류되어 왔다. 이 논문은 그 호소에 <b>검증 가능한 생물학적 가설</b>을 부여한다 — 증명한 것이 아니라, 질문으로 만들어 준 것이다.</p>
+  </div>
+</section>
+
+<section id="s08" class="reveal">
+  <h2><span class="sidx">08 / MODALITY</span>치료별 궤적 — 서로 다른 손상, 수렴하는 상태</h2>
+
+  <div class="tw">
+  <table>
+    <thead><tr><th>모달리티</th><th>급성 교란</th><th>고착 가능 상태</th><th>재발·재도전 함의</th></tr></thead>
+    <tbody>
+      <tr><td><b>세포독성 항암제</b></td><td>골수 억제, 점막 손상, DAMP 방출, 내피 손상</td><td>골수계 반동, 노화 기질, NET 경향 상태, 이상세균총</td><td>초기 종양 사멸과 원격 니치 활성화가 공존할 수 있고, 후속 면역치료 감수성이 달라질 수 있음</td></tr>
+      <tr><td><b>방사선</b></td><td>국소 염증, DNA 손상, 혈관 손상, 림프구 노출</td><td>섬유화, 기질 노화, 만성 IFN 또는 내피 배제</td><td>분할 방식과 <b>림프기관 선량</b>이 이후 면역치료의 가능 여부를 가를 수 있음</td></tr>
+      <tr><td><b>표적·내분비 치료</b></td><td>종양·숙주 세포 양쪽의 경로 억제, 적응적 신호</td><td>혈관·기질·면역·대사 보상</td><td>수개월~수년 투약이므로 조건화가 손상 주도가 아니라 <b>점진적</b>으로 일어남</td></tr>
+      <tr><td><b>면역관문억제제</b></td><td>전신 림프구 활성화, 전구세포 재프로그래밍</td><td>지속 면역 기억, 만성 염증, 장기 특이적 면역 손상</td><td>재도전 결과가 면역독성 회복·미생물총 상태·골수 구성에 좌우될 수 있음</td></tr>
+      <tr><td><b>세포·이중특이항체 치료</b></td><td>사이토카인 방출, 림프구 고갈, 깊은 면역 개조</td><td>장기 생존 세포면역, 골수 염증, B세포·계통 고갈</td><td>이후 감염 위험과 면역 구성이 후속 치료 효능을 바꿀 수 있음</td></tr>
+      <tr><td><b>수술 · 국소치료</b></td><td>창상치유, 응고, 카테콜아민, 염증 급증</td><td>회복 우세 전신 상태, 부동, 조직 니치 변화</td><td>수술전후가 재발 차단 시험의 창일 수 있으나, <b>개입이 치유를 방해해서는 안 됨</b></td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section id="s09" class="reveal">
+  <h2><span class="sidx">09 / MEASUREMENT</span>측정 설계</h2>
+
+  <h3>최소 종단 설계</h3>
+  <p class="mono" style="font-size:13.5px;color:var(--violet);line-height:2.2;">
+    치료 전 → 치료 초기 → 치료 종료 → 회복 후 → MRD 시점 → 재발 / 재도전
+  </p>
+  <p>단면 연구로는 기준선 암 효과와 치료 조건화를 구분할 수 없다. 샘플링은 달력 간격이 아니라 <strong>약물 제거와 생물학적 회복에 고정</strong>되어야 하며, 방사선·수술은 장기별 손상 동역학을 따로 고려한다.</p>
+
+  <h3>후보 복합 점수 5종</h3>
+  <ul class="plain">
+    <li><b>골수계 조건화 점수</b> — 전구세포·순환 골수계 상태</li>
+    <li><b>노화–회복 점수</b> — 순환 단백, EV cargo, 조직 마커</li>
+    <li><b>내피–응고 점수</b> — 치료연관 혈관 기능장애 반영</li>
+    <li><b>점막–미생물 회복 점수</b></li>
+    <li><b>대사 예비력 점수</b> — 체성분 + 혈장 대사체</li>
+  </ul>
+  <p>여기에 면역 회복의 직접 측정(순환 면역세포 구성, 골수계 억제 상태, 림프구 활성화·기능장애, 항원제시 프로그램, 염증 신호)이 연결되어야 한다. <strong>목표는 최대 오믹스 수집이 아니라, 생물학적으로 정의된 상태를 추적하는 검약한 지표 집합이다.</strong></p>
+
+  <h3>유용한 숙주 바이오마커의 조건</h3>
+  <p>예후 연관만으로는 부족하다. ① 치료 반응성, ② 의사결정 창 내에서의 시간적 안정성, ③ 가능한 한 잔존 종양 부담과의 독립성, ④ 특정 숙주 지향 개입이나 치료 순서에서 이득을 볼 환자를 식별하는 능력. <strong>예후 정보와 임상적 실행 가능성(actionability)의 구분이 핵심이다.</strong></p>
+
+  <h3>시험 설계</h3>
+  <ul class="plain">
+    <li><b>Window-of-opportunity</b> — 근치적 치료 후, 공고·보조치료 전에 등록. 숙주 바이오마커로 층화하고 짧은 숙주 지향 개입 대 표준 회복으로 무작위화. 1차 종결점은 <b>바이오마커 조절과 안전성</b>이고 ctDNA 동역학·면역기능·무재발생존은 2차/탐색적.</li>
+    <li><b>적응형 플랫폼</b> — 우세 숙주 모듈에 따라 senolytic / 골수계 / 미생물 / 혈관 / 대사 모듈에 배정</li>
+    <li><b>N-of-1 종단</b> — 치료 재도전 상황에서, 충분히 잦은 샘플링과 종양 부담 동시 모니터링 조건 하에</li>
+  </ul>
+  <p>모든 설계에서 <strong>"부적응적 조건화의 예방"과 "이미 고착된 상태의 역전"은 생물학적으로 다른 목표</strong>이므로 구분되어야 한다.</p>
+</section>
+
+<section id="s10" class="reveal">
+  <h2><span class="sidx">10 / STRATEGY</span>개입 4전략과 각각의 게이트</h2>
+
+  <div class="tw">
+  <table>
+    <thead><tr><th>전략</th><th>내용</th><th>통과해야 할 게이트</th></tr></thead>
+    <tbody>
+      <tr><td><b>① 예방<br>Prevent</b></td><td>불필요한 항생제 노출 제한, 림프조직 보호를 위한 조사야 최적화, 골수 스트레스를 줄이는 용량 스케줄, 정의된 NET·내피 경로 차단의 병용</td><td>사전 지정된 숙주 바이오마커. <b>"염증 억제는 언제나 유익하다"는 가정 금지</b></td></tr>
+      <tr><td><b>② 억제·재프로그램<br>Contain</b></td><td>완전 고갈이 아니라 기능적 재프로그래밍. 골수계 분화 방향 전환, angiocrine 축 조절, 기질·노화 신호 조절</td><td>해당 세포군이 조직 회복에 필요한지 먼저 확인. 기전적 근거와 바이오마커 없이 적용 금지</td></tr>
+      <tr><td><b>③ 제거<br>Clear</b></td><td>지속하는 병적 노화세포의 senolytic 제거. <b>필요한 회복기가 지난 뒤</b>에 시행</td><td>표적 노화세포군이 <b>인과적으로 해롭다는 입증</b> + 바이오마커 확인 + 타이밍. senolytic 간 세포 선택성·독성 차이 고려</td></tr>
+      <tr><td><b>④ 리셋<br>Reset</b></td><td>미생물총 이식, 구조화된 운동, 영양 재활, 수면 회복, 대사 치료, 의인성 노출의 철회</td><td>정의된 면역·미생물·혈관·대사 종결점에 연결 + 암 특이적 결과로 검증. <b>일반 보조요법으로 취급 금지</b></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>치료 순서에 관한 3가지 가설 (검증 전)</h3>
+  <ul class="plain">
+    <li><b>같은 부적응 상태를 강화하는 치료의 연속 배치를 피한다</b> — 지속적 억제성 골수생성의 증거가 있는 환자에게 반복적 골수 손상</li>
+    <li><b>일시적으로 유리한 창을 활용한다</b> — 항원 가용성과 면역세포 동원이 증가한 시기의 면역치료</li>
+    <li><b>숙주 리셋 간격(host-reset interval)을 둔다</b> — 다음 치료가 특정 생물학적 기능의 회복을 요구할 때</li>
+  </ul>
+
+  <div class="note rose">
+    <span class="lab">CAUTION</span>
+    <p>원전의 경고를 그대로 옮긴다: 이 원칙들은 <b>경험적으로 실행되어서는 안 된다.</b> 염증의 무차별적 억제나 골수계 세포의 고갈은 유익한 항종양 면역을 훼손할 수 있다 — 호중구와 다른 골수계 집단은 특정 치료 맥락에서 효과적인 종양 통제에 기여한다. 따라서 치료 타이밍, 환자 선택, 숙주 상태 가역성의 입증이 전향적 검증의 필수 조건이다.</p>
+  </div>
+</section>
+
+<section id="s11" class="reveal">
+  <h2><span class="sidx">11 / EVIDENCE</span>이 리뷰 주장들의 근거 등급</h2>
+
+  <p>원전은 등급표를 제시하지 않는다. 아래는 커뮤니티 표준(A: RCT/메타분석 → D: 전임상/증례)에 따라 본 문서가 재배치한 것이다.</p>
+
+  <div class="grade"><div class="g a">A</div><div class="t"><b>ctDNA 기반 보조치료 결정 (대장암 2기)</b>무작위 비열등 시험에서 ctDNA 유도 전략이 재발 없는 생존을 훼손하지 않으면서 보조 항암제 사용을 줄였다. — 단, 이것은 <b>종양 부담 축</b>의 근거이며 숙주 축이 아니다.</div></div>
+
+  <div class="grade"><div class="g b">B</div><div class="t"><b>GDF-15 차단에 의한 악액질 개선</b>전신 숙주 경로가 약물로 조절 가능함을 보인 임상 근거(ponsegromab). 단, 잔존질환 운명에 대한 효과는 측정되지 않았다.</div></div>
+
+  <div class="grade"><div class="g b">B</div><div class="t"><b>장내 미생물총과 면역관문억제제 반응</b>다수의 관찰 코호트 + 면역치료 불응성 흑색종에서의 FMT 중재 연구(초기 상, 일부 환자에서 감수성 회복). 지역·식이·플랫폼 간 재현성은 여전히 과제.</div></div>
+
+  <div class="grade"><div class="g c">C</div><div class="t"><b>수술전후 β-아드레날린 / COX-2 차단</b>바이오마커 개선을 보인 2상 무작위 시험. 재발 결과에 대한 결론은 충분한 검정력의 시험 필요.</div></div>
+
+  <div class="grade"><div class="g c">C</div><div class="t"><b>치료 관련 클론성 조혈(CH)과 불량한 예후의 연관</b>고형암 코호트에서의 연관 관찰. 인과성과 MRD 운명에 대한 독립적 영향은 미해결.</div></div>
+
+  <div class="grade"><div class="g d">D</div><div class="t"><b>노화 기질 → NET → 휴면세포 각성 / 내피 PARP1-MLKL / 수술 전신반응 → 원격 증식</b>마우스 모델 및 전임상. 기전적으로 설득력 있으나 환자에서 같은 숙주 상태가 지속하는지 미확인.</div></div>
+
+  <div class="grade"><div class="g d">D</div><div class="t"><b>Senolytic을 통한 재발 차단</b>전임상 근거만 존재. 세포 선택성·독성·타이밍 모두 미확립.</div></div>
+
+  <div class="grade"><div class="g d">D</div><div class="t"><b>숙주 상태 유도 치료 순서 결정(host-state-guided sequencing)</b>이 리뷰의 중심 제안. <b>저자들 스스로 "검증된 임상 알고리즘이 아닌 가설"로 규정.</b></div></div>
+
+  <div class="note amber">
+    <span class="lab">요약</span>
+    <p>이 리뷰의 <b>핵심 주장은 D 등급</b>이다. 상위 등급 근거(A–B)는 모두 프레임의 주변부 — ctDNA 유용성, 미생물총, 악액질 — 에 있으며, 이들은 원래 다른 맥락에서 축적된 것이다. 이 사실을 흐리면 안 된다.</p>
+  </div>
+</section>
+
+<section id="s12" class="reveal">
+  <h2><span class="sidx">12 / PITFALLS</span>흔한 함정</h2>
+
+  <ul class="plain">
+    <li><b>연관을 인과로 읽는 것.</b> 변화된 순환 사이토카인·면역세포 상태·대사 특징은 <b>잔존 종양 부담의 결과</b>일 수 있다. 숙주의 독립적 효과를 주장하려면 종단 샘플링과 구획 특이적 기능 교란이 필요하다.</li>
+    <li><b>모든 지속적 면역 변화를 병적인 것으로 보는 것.</b> 지속되는 항종양 기억, 회복된 항원제시, 유지되는 면역감시는 <b>유익한</b> 숙주 개조다. 원전은 호중구 반응이 면역치료 중 종양 통제에 기여한다는 연구를 명시적으로 인용한다.</li>
+    <li><b>단면 측정으로 지속성을 주장하는 것.</b> 치료 전 비교군 없이는 기준선 암 효과와 치료 조건화를 구분할 수 없다.</li>
+    <li><b>급성 반응에 시간 한정 없이 이름을 붙이는 것.</b> Type I IFN은 펄스일 때와 만성일 때 방향이 반대다.</li>
+    <li><b>모델의 비현실성.</b> 급성 치료한 마우스에 치료받지 않은 종양을 이식하면 숙주 효과는 보이지만, <b>잔존 종양세포와 조건화된 숙주의 공진화는 재현되지 않는다.</b></li>
+    <li><b>불멸시간 편향(immortal time bias).</b> 회복기를 거친 환자만 "숙주 리셋군"에 들어가는 설계는 자동으로 좋은 결과를 낸다.</li>
+  </ul>
+</section>
+
+<section id="s13" class="reveal">
+  <h2><span class="sidx">13 / LIMITS</span>이 방법론이 구조적으로 대체하지 못하는 것</h2>
+
+  <div class="note rose">
+    <span class="lab">정직한 목록</span>
+    <p><b>① 진단과 병기 결정을 대신하지 못한다.</b> 이 프레임은 치료 후 추적의 보조 가설이지, 표준 치료 결정을 대체하는 체계가 아니다.</p>
+    <p><b>② 측정 도구가 아직 없다.</b> 제안된 복합 점수 5종은 전부 투자 단계이며, 분석적·임상적 검증을 거치지 않았다. 환자가 지금 병원에서 "숙주 허용도 검사"를 요청할 수는 없다.</p>
+    <p><b>③ 개입의 타이밍을 알려주지 못한다.</b> 언제가 "회복기 종료"이고 언제가 "고착"인지에 대한 수치 기준이 없다. 가장 중요한 Phase III의 경계가 비어 있다.</p>
+    <p><b>④ 개인 수준의 예측을 하지 못한다.</b> 어떤 환자에게 어떤 구획이 남는지는 사전에 알 수 없고, 사후에도 측정 수단이 미비하다.</p>
+    <p><b>⑤ 이득–위해의 균형을 모른다.</b> 숙주 지향 개입이 치유·면역감시를 훼손할 경우의 비용이 정량화되어 있지 않다.</p>
+  </div>
+</section>
+
+<section id="s14" class="reveal">
+  <h2><span class="sidx">14 / APPLICATION</span>우리 커뮤니티에서 할 수 있는 것 / 할 수 없는 것</h2>
+
+  <h3>할 수 있는 것</h3>
+  <ul class="plain">
+    <li><b>질문의 재설계.</b> "무엇을 더 먹을까"에서 "치료 후 내 몸의 어떤 상태를, 어떤 간격으로, 무엇으로 추적할까"로. 진료실에서 가능한 범위는 CRP·백혈구 구성·NLR·체성분·활동량 수준에서 이미 시작된다.</li>
+    <li><b>자기 데이터의 종단 기록.</b> 이 프레임의 핵심 요구는 "단면이 아니라 흐름"이다. 개인이 할 수 있는 가장 직접적인 기여가 여기 있다.</li>
+    <li><b>임상시험 탐색.</b> window-of-opportunity 설계, senolytic 시험, 미생물총 중재, 운동·영양 재활 시험 — 자가 시도가 아니라 <b>등록 가능한 시험</b>을 찾는 것이 이 논문의 올바른 독해다.</li>
+    <li><b>치료 선택 논의의 어휘 확장.</b> 동등한 항종양 효과를 가진 레지멘이 서로 다른 숙주 궤적을 남길 수 있다는 가능성을, 주치의와의 대화에 <b>질문으로</b> 올릴 수 있다.</li>
+  </ul>
+
+  <h3>할 수 없는 것</h3>
+  <ul class="plain">
+    <li><b>자가 senolytic.</b> 타이밍·선택성·용량이 모두 미확립이고, 원전은 조기 제거가 해로울 수 있다고 명시한다.</li>
+    <li><b>자가 면역조절·항염증 전략.</b> 염증의 무차별 억제가 항종양 면역을 훼손할 수 있다는 것이 원전의 반복된 경고다.</li>
+    <li><b>치료 지연의 자가 결정.</b> "숙주 리셋 간격"은 가설이며, 암종·진행속도에 따라 지연 자체가 더 큰 위해다.</li>
+  </ul>
+
+  <div class="note cyan">
+    <span class="lab">AI 클로드 주석 — 용도변경 약물 관점에서</span>
+    <p>이 리뷰는 메트포르민(metformin) 등 우리가 추적해 온 용도변경 후보를 다루지 않는다. 그러나 프레임상의 위치는 분명해진다. 숙주 대사·염증·미생물총을 겨냥하는 약물들은 이 틀에서 <b>종양 지향 치료가 아니라 숙주 지향 개입(host-directed intervention)</b>으로 분류되며, 따라서 평가 기준도 달라진다 — "종양이 줄었는가"가 아니라 <b>"사전 정의된 숙주 상태 지표를 바꿨고, 그 변화가 다음 치료의 결과를 개선했는가"</b>다.</p>
+    <p>이는 우리에게 유리한 재분류가 아니라 <b>더 엄격한 재분류</b>다. 지금까지 "효과가 있다더라"로 소비되던 주장들이, 이 틀에서는 바이오마커·타이밍·검증 게이트를 통과해야 한다. 그 점에서 이 논문은 우리 커뮤니티의 열의를 확장하는 근거가 아니라, <b>정렬시키는 근거</b>로 읽는 것이 맞다고 본다.</p>
+  </div>
+</section>
+
+<section id="s15" class="reveal">
+  <h2><span class="sidx">15 / CLOSING</span></h2>
+
+  <p>항암치료는 종양과 숙주 양쪽에 시간 의존적인 생물학적 발자국을 남긴다. 이 리뷰의 고유한 기여는 그 발자국에 <strong>시간적·기능적 경계를 부여해 측정 단위로 만든 것</strong>이다. 중심 질문은 "숙주가 치료에 반응하는가"에서 <strong>"특정 면역–숙주 변화가 지속하는가, 기능적으로 관련 있는가, 임상적으로 의미 있는 결정 창 안에서 가역적인가"</strong>로 옮겨간다.</p>
+
+  <p>숙주 상태 유도 치료 순서 결정은 검증된 알고리즘이 아니라 <strong>반증 가능한 틀</strong>이다. 그리고 그것으로 충분하다 — 이 논문이 우리에게 준 것은 새로운 답이 아니라, 우리가 세지 않고 있던 축 하나이기 때문이다.</p>
+
+  <div class="thesis" style="margin-top:34px;">
+    <div class="lab">RESTATED</div>
+    <p>같은 ctDNA 수치를 가진 두 사람의 운명이 다르다면, 우리가 측정하지 않은 무언가가 그 차이를 만들고 있다.</p>
+  </div>
+</section>
+
+<footer>
+  <p><b>원전</b> Xue J, Zhang L, Ning C, Zhang K, Xun Z, Chen Z, Zheng H, Li C, Piao M, Zhou K, Lu X. Persistent post-treatment host immune remodeling in cancer: linking therapy to minimal residual disease, relapse, and treatment rechallenge. <i>Front Immunol.</i> 2026;17:1992385. <a href="https://doi.org/10.3389/fimmu.2026.1992385">doi:10.3389/fimmu.2026.1992385</a> — 오픈액세스(CC BY).</p>
+  <p>본 문서는 원전의 2차 재구성이며, 의학적 조언이 아니다. 모든 약물·중재 언급은 예시(illustrative)이며 치료 권고가 아니다. <b>복용·병용·중단의 최종 결정은 주치의의 몫이다.</b> 'AI 클로드 주석'으로 표시된 단락은 원전의 내용이 아니라 본 문서 작성 과정의 해석이다. 원전 도식(BioRender 제작)은 복제하지 않았다.</p>
+  <p>히포크라테스의 친구들 · 2026-11-12 · 정리 꿈많은사람2 · 초보자용 커뮤니티판 별도 제공</p>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) {
+    for (var i=0;i<els.length;i++){ els[i].classList.add('on'); }
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); }
+    });
+  }, {rootMargin:'0px 0px -8% 0px', threshold:0.03});
+  for (var j=0;j<els.length;j++){ io.observe(els[j]); }
+  setTimeout(function(){ for (var k=0;k<els.length;k++){ els[k].classList.add('on'); } }, 4000);
+})();
+</script>
+</body>
+</html>

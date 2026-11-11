@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>치료가 끝난 몸은, 치료 전의 몸이 아닙니다</title>
+<meta name="description" content="항암치료 후 남는 '몸의 변화'에 관한 2026년 리뷰 논문을, 환자와 보호자를 위해 쉽게 풀어 소개합니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBF7EF;
+    --paper-2:#F4EEE2;
+    --ink:#2E2A24;
+    --ink-soft:#5A5248;
+    --line:#E0D6C4;
+    --green:#4A7C59;
+    --green-bg:#EAF2EA;
+    --amber:#B5803A;
+    --amber-bg:#FBF1DF;
+    --rose:#A85A52;
+    --rose-bg:#FAEDEA;
+    --quote-bg:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Noto Sans KR',sans-serif;
+    font-size:19px;
+    line-height:1.95;
+    letter-spacing:-0.01em;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:0 22px 90px;}
+  h1,h2,h3{font-family:'Gowun Batang',serif;line-height:1.5;letter-spacing:-0.02em;}
+
+  /* ---------- hero ---------- */
+  header{
+    padding:70px 0 46px;
+    border-bottom:1px solid var(--line);
+    margin-bottom:46px;
+  }
+  .eyebrow{
+    font-size:15px;color:var(--green);font-weight:700;
+    letter-spacing:0.04em;margin:0 0 18px;
+  }
+  h1{font-size:34px;margin:0 0 22px;font-weight:700;}
+  .lede{font-size:19px;color:var(--ink-soft);margin:0;}
+  .meta{
+    margin-top:30px;font-size:15px;color:var(--ink-soft);
+    background:var(--paper-2);border-radius:12px;padding:16px 18px;line-height:1.7;
+  }
+
+  /* ---------- sections ---------- */
+  section{margin:0 0 58px;}
+  h2{
+    font-size:26px;margin:0 0 20px;
+    padding-top:10px;
+  }
+  h2 .num{
+    display:block;font-family:'Noto Sans KR',sans-serif;
+    font-size:14px;font-weight:700;color:var(--green);
+    letter-spacing:0.08em;margin-bottom:8px;
+  }
+  h3{font-size:21px;margin:34px 0 12px;}
+  p{margin:0 0 20px;}
+  strong{font-weight:700;background:linear-gradient(transparent 62%, #F6E6B8 62%);}
+
+  /* ---------- voices ---------- */
+  .voice{
+    background:var(--quote-bg);
+    border-left:4px solid var(--line);
+    border-radius:4px 14px 14px 4px;
+    padding:18px 22px;margin:0 0 14px;
+    font-size:18px;color:var(--ink-soft);
+  }
+  .voice span{display:block;margin-top:8px;font-size:14px;color:#9A9083;}
+
+  /* ---------- callouts ---------- */
+  .box{border-radius:16px;padding:24px 24px 8px;margin:28px 0;}
+  .box h3{margin-top:0;font-size:19px;}
+  .box.green{background:var(--green-bg);border:1px solid #CFE0CF;}
+  .box.amber{background:var(--amber-bg);border:1px solid #EBD6AE;}
+  .box.rose{background:var(--rose-bg);border:1px solid #EDCFC9;}
+  .box .tag{
+    display:inline-block;font-size:13px;font-weight:700;letter-spacing:0.05em;
+    padding:3px 11px;border-radius:999px;margin-bottom:12px;
+  }
+  .green .tag{background:var(--green);color:#fff;}
+  .amber .tag{background:var(--amber);color:#fff;}
+  .rose .tag{background:var(--rose);color:#fff;}
+
+  /* ---------- figure ---------- */
+  figure{margin:30px 0;}
+  figure svg{width:100%;height:auto;display:block;}
+  figcaption{font-size:15px;color:var(--ink-soft);margin-top:12px;text-align:center;line-height:1.7;}
+
+  /* ---------- stairs ---------- */
+  .stairs{list-style:none;padding:0;margin:26px 0;}
+  .stairs li{
+    position:relative;background:#fff;border:1px solid var(--line);
+    border-radius:14px;padding:20px 22px 20px 70px;margin-bottom:12px;
+  }
+  .stairs li .no{
+    position:absolute;left:20px;top:20px;
+    width:34px;height:34px;border-radius:50%;
+    background:var(--paper-2);color:var(--green);
+    font-weight:700;font-size:16px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .stairs li b{display:block;font-size:19px;margin-bottom:4px;}
+  .stairs li small{font-size:17px;color:var(--ink-soft);line-height:1.75;display:block;}
+  .stairs li.key{border:2px solid var(--green);background:var(--green-bg);}
+  .stairs li.key .no{background:var(--green);color:#fff;}
+
+  /* ---------- organ cards ---------- */
+  .cards{display:grid;grid-template-columns:1fr;gap:12px;margin:26px 0;}
+  .card{
+    background:#fff;border:1px solid var(--line);border-radius:14px;
+    padding:18px 20px;display:flex;gap:16px;align-items:flex-start;
+  }
+  .card .ic{font-size:26px;line-height:1.3;flex:0 0 auto;}
+  .card b{display:block;font-size:18px;margin-bottom:3px;}
+  .card small{font-size:16.5px;color:var(--ink-soft);line-height:1.75;}
+
+  /* ---------- question cards ---------- */
+  .qcard{
+    background:#fff;border:1px solid var(--line);
+    border-radius:16px;padding:22px 22px 18px;margin-bottom:14px;
+    box-shadow:0 1px 0 rgba(0,0,0,.02);
+  }
+  .qcard .qnum{
+    font-size:13px;font-weight:700;color:var(--green);
+    letter-spacing:0.08em;margin-bottom:10px;
+  }
+  .qcard .qtext{
+    font-family:'Gowun Batang',serif;font-size:20px;line-height:1.75;
+    color:var(--ink);margin:0 0 12px;
+  }
+  .qcard .qtext::before{content:"“";}
+  .qcard .qtext::after{content:"”";}
+  .qcard .why{font-size:16px;color:var(--ink-soft);margin:0;line-height:1.75;}
+  .copyhint{font-size:15px;color:var(--ink-soft);margin-bottom:18px;}
+
+  /* ---------- today list ---------- */
+  .today{list-style:none;padding:0;margin:0;}
+  .today li{
+    padding:14px 0 14px 34px;border-bottom:1px dashed var(--line);
+    position:relative;font-size:18px;
+  }
+  .today li:last-child{border-bottom:none;}
+  .today li::before{
+    content:"→";position:absolute;left:0;top:14px;color:var(--green);font-weight:700;
+  }
+
+  /* ---------- closing ---------- */
+  .closing{
+    text-align:center;font-family:'Gowun Batang',serif;
+    font-size:23px;line-height:1.9;color:var(--ink);
+    padding:44px 10px;border-top:1px solid var(--line);margin-top:20px;
+  }
+  footer{
+    font-size:15px;color:var(--ink-soft);line-height:1.8;
+    border-top:1px solid var(--line);padding-top:26px;
+  }
+  footer a{color:var(--green);}
+
+  /* ---------- motion ---------- */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.on{opacity:1;transform:none;}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1!important;transform:none!important;transition:none!important;}
+  }
+  a:focus-visible, button:focus-visible{outline:3px solid var(--green);outline-offset:3px;}
+
+  @media (max-width:520px){
+    body{font-size:18px;}
+    h1{font-size:28px;}
+    h2{font-size:23px;}
+    .wrap{padding:0 18px 70px;}
+    .qcard .qtext{font-size:18.5px;}
+  }
+  @media print{
+    body{background:#fff;}
+    .reveal{opacity:1;transform:none;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">히포크라테스의 친구들 · 논문 소개</p>
+  <h1>치료가 끝난 몸은,<br>치료 전의 몸이 아닙니다</h1>
+  <p class="lede">2026년 11월에 나온 한 리뷰 논문이, 우리가 미처 생각하지 못했던 질문 하나를 돌려주었습니다. 읽는 데 5분이면 충분합니다.</p>
+  <div class="meta">
+    이 글은 <b>새로운 치료법을 소개하는 글이 아닙니다.</b> 아직 증명되지 않은 <b>가설</b>을 다룬 논문입니다.
+    그런데도 소개하는 이유는, 이 논문이 우리가 오랫동안 빠뜨리고 있던 한 가지를 분명하게 짚어주기 때문입니다.
+  </div>
+</header>
+
+<section class="reveal">
+  <h2><span class="num">01. 들어가며</span>이런 말, 해보신 적 있나요</h2>
+
+  <div class="voice">치료는 다 끝났고 검사 수치도 깨끗하다는데, 왜 예전 몸으로 안 돌아올까요.<span>— 유방암, 치료 종료 8개월</span></div>
+  <div class="voice">같은 병기, 같은 항암제를 썼는데 저는 재발했고 같은 병실 쓰던 분은 5년째 괜찮습니다. 왜 그럴까요.<span>— 대장암 보호자</span></div>
+  <div class="voice">수술 잘 됐다고 하는데 왜 이렇게 불안한지 모르겠어요.<span>— 폐암, 수술 후 3개월</span></div>
+
+  <p>이런 질문들에 지금까지 우리가 들어온 답은 대개 비슷했습니다. "기력이 떨어져서 그래요", "사람마다 다르죠", "너무 걱정하지 마세요."</p>
+
+  <p>그런데 이 논문은 다르게 답합니다. <strong>그건 기분 탓도, 엄살도 아닙니다.</strong> 항암치료는 암세포만 건드린 것이 아니라, 몸 전체를 실제로 바꿔놓았고, 그 바뀐 상태가 그 뒤의 일에 영향을 줄 수 있다는 것입니다.</p>
+</section>
+
+<section class="reveal">
+  <h2><span class="num">02. 비유</span>밭과 씨앗</h2>
+
+  <p>논문의 내용을 밭에 비유해 보겠습니다.</p>
+
+  <figure>
+    <svg viewBox="0 0 600 760" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="치료 전, 치료 직후, 그리고 회복된 밭과 굳은 밭을 비교한 그림">
+      <defs>
+        <style>
+          .lbl{font-family:'Noto Sans KR',sans-serif;font-size:19px;fill:#2E2A24;font-weight:700;}
+          .sub{font-family:'Noto Sans KR',sans-serif;font-size:15px;fill:#5A5248;}
+          .pnl{fill:#FFFFFF;stroke:#E0D6C4;stroke-width:1.5;}
+        </style>
+      </defs>
+
+      <!-- panel 1 -->
+      <rect class="pnl" x="10" y="10" width="580" height="160" rx="16"/>
+      <text class="lbl" x="34" y="48">① 치료 전 — 잡초가 자란 밭</text>
+      <rect x="34" y="104" width="532" height="44" rx="8" fill="#E8DFC9"/>
+      <g fill="#7D9B6A">
+        <circle cx="110" cy="96" r="13"/><circle cx="200" cy="90" r="17"/>
+        <circle cx="300" cy="97" r="12"/><circle cx="400" cy="92" r="15"/><circle cx="480" cy="98" r="11"/>
+      </g>
+      <text class="sub" x="34" y="80">암세포가 눈에 보이게 자라 있는 상태</text>
+
+      <!-- arrow -->
+      <path d="M300 176 L300 196" stroke="#B5803A" stroke-width="3"/>
+      <path d="M294 192 L300 202 L306 192 Z" fill="#B5803A"/>
+
+      <!-- panel 2 -->
+      <rect class="pnl" x="10" y="210" width="580" height="180" rx="16"/>
+      <text class="lbl" x="34" y="248">② 치료 — 잡초를 뽑고, 밭도 갈아엎는다</text>
+      <text class="sub" x="34" y="280">항암제·방사선·수술은 암세포만 겨냥하지 않습니다.</text>
+      <text class="sub" x="34" y="304">흙도 함께 뒤집히고, 물길도 달라집니다.</text>
+      <rect x="34" y="324" width="532" height="44" rx="8" fill="#D9C9A8"/>
+      <g stroke="#B09871" stroke-width="3">
+        <path d="M70 330 L110 362"/><path d="M150 330 L190 362"/><path d="M230 330 L270 362"/>
+        <path d="M310 330 L350 362"/><path d="M390 330 L430 362"/><path d="M470 330 L510 362"/>
+      </g>
+      <g fill="#8E6E4E">
+        <circle cx="140" cy="346" r="5"/><circle cx="340" cy="350" r="5"/><circle cx="470" cy="344" r="5"/>
+      </g>
+      <text class="sub" x="34" y="386" fill="#A85A52">· 흙 속에 씨앗 몇 개가 남습니다 (잔존 암세포)</text>
+
+      <!-- arrow split -->
+      <path d="M300 396 L300 420" stroke="#B5803A" stroke-width="3"/>
+      <path d="M300 420 L160 420 M300 420 L440 420" stroke="#B5803A" stroke-width="3"/>
+      <path d="M160 420 L160 440 M440 420 L440 440" stroke="#B5803A" stroke-width="3"/>
+      <path d="M154 436 L160 446 L166 436 Z" fill="#B5803A"/>
+      <path d="M434 436 L440 446 L446 436 Z" fill="#B5803A"/>
+
+      <!-- panel 3 left -->
+      <rect class="pnl" x="10" y="456" width="282" height="286" rx="16" stroke="#CFE0CF" fill="#F6FAF6"/>
+      <text class="lbl" x="32" y="494" fill="#4A7C59">③-가 되살아난 밭</text>
+      <text class="sub" x="32" y="524">흙이 숨 쉬고,</text>
+      <text class="sub" x="32" y="548">물길이 제자리를 찾고,</text>
+      <text class="sub" x="32" y="572">지킴이(면역)가 돌아온 상태</text>
+      <rect x="32" y="600" width="238" height="40" rx="8" fill="#DDE9D6"/>
+      <g fill="#8E6E4E"><circle cx="90" cy="620" r="5"/><circle cx="200" cy="620" r="5"/></g>
+      <text class="sub" x="32" y="674" fill="#4A7C59">씨앗은 깨어나지 못하거나,</text>
+      <text class="sub" x="32" y="698" fill="#4A7C59">깨어나도 곧 정리됩니다.</text>
+
+      <!-- panel 3 right -->
+      <rect class="pnl" x="308" y="456" width="282" height="286" rx="16" stroke="#EDCFC9" fill="#FDF6F4"/>
+      <text class="lbl" x="330" y="494" fill="#A85A52">③-나 굳어버린 밭</text>
+      <text class="sub" x="330" y="524">흙이 딱딱하게 굳고,</text>
+      <text class="sub" x="330" y="548">염증이 가라앉지 않고,</text>
+      <text class="sub" x="330" y="572">지킴이가 지쳐 있는 상태</text>
+      <rect x="330" y="600" width="238" height="40" rx="8" fill="#E8D2CC"/>
+      <g fill="#8E6E4E"><circle cx="388" cy="620" r="5"/><circle cx="498" cy="620" r="5"/></g>
+      <g stroke="#4A7C59" stroke-width="3" fill="none">
+        <path d="M388 616 C388 600 396 594 400 588"/>
+        <path d="M498 616 C498 602 490 596 486 590"/>
+      </g>
+      <text class="sub" x="330" y="674" fill="#A85A52">같은 씨앗인데</text>
+      <text class="sub" x="330" y="698" fill="#A85A52">싹이 트기 시작합니다.</text>
+    </svg>
+    <figcaption>같은 수의 씨앗이 남아 있어도, 땅의 상태에 따라 결과가 달라집니다.<br>이것이 논문이 말하는 핵심입니다.</figcaption>
+  </figure>
+
+  <div class="box amber">
+    <span class="tag">짚고 넘어갈 것</span>
+    <h3>이 비유는 '체질 개선'이 아닙니다</h3>
+    <p>"몸을 좋게 만들면 암이 안 온다" 같은 이야기와 이 논문은 다릅니다. 논문이 말하는 땅의 상태는 기분이나 체질이 아니라, <b>혈액검사·영상·조직검사로 측정할 수 있는 구체적인 신체 변화</b>입니다. 그리고 논문 저자들도 "아직 어떤 지표가 믿을 만한지 확립되지 않았다"고 분명히 적어두었습니다.</p>
+  </div>
+</section>
+
+<section class="reveal">
+  <h2><span class="num">03. 시간</span>치료가 끝난 뒤의 네 단계</h2>
+
+  <p>논문은 치료 후의 몸을 하나의 상태가 아니라 <strong>시간에 따라 변해가는 네 단계</strong>로 봅니다.</p>
+
+  <ul class="stairs">
+    <li><span class="no">1</span><b>흔들림 (치료 직후, 며칠~몇 주)</b><small>항암제·방사선·수술이 암세포와 함께 정상 조직도 건드립니다. 백혈구가 떨어지고, 장 점막이 상하고, 혈관이 자극받고, 스트레스 호르몬이 올라갑니다.</small></li>
+    <li><span class="no">2</span><b>회복 (몇 주~몇 달)</b><small>몸이 스스로 고치기 시작합니다. 골수가 다시 피를 만들고, 상처가 아물고, 장이 재생됩니다. 꼭 필요한 과정입니다.</small></li>
+    <li class="key"><span class="no">3</span><b>굳어짐 (이 시기가 가장 중요합니다)</b><small>대부분은 원래대로 돌아가지만, 일부는 <b>그 상태 그대로 굳어버립니다.</b> 염증이 계속 켜져 있거나, 조직이 딱딱해지거나, 면역 세포 구성이 바뀐 채로 머뭅니다. 논문은 이때가 <b>손쓸 수 있는 시기</b>라고 말합니다. 암 덩어리는 아직 보이지 않는데, 땅의 상태는 이미 달라져 있기 때문입니다.</small></li>
+    <li><span class="no">4</span><b>갈림길</b><small>남아 있던 씨앗이 ① 완전히 정리되거나 ② 계속 잠들어 있거나 ③ 가끔 깨어났다 들어가거나 ④ 본격적으로 자라기 시작합니다. 그리고 다음 치료가 얼마나 잘 들을지도 여기서 갈립니다.</small></li>
+  </ul>
+
+  <p>지금까지 우리는 치료가 끝나면 <b>"깨끗하다"와 "재발했다" 둘 중 하나</b>로만 생각해 왔습니다. 그런데 그 사이에는 이렇게 여러 상태가 있고, 서로 오갈 수도 있다는 것입니다.</p>
+</section>
+
+<section class="reveal">
+  <h2><span class="num">04. 장소</span>몸의 일곱 군데</h2>
+
+  <p>논문은 치료 후 변화가 남는 곳을 일곱 군데로 정리했습니다. 전부 외우실 필요는 없고, <b>"암이 있던 자리만의 문제가 아니구나"</b>만 기억하시면 충분합니다.</p>
+
+  <div class="cards">
+    <div class="card"><span class="ic">🦴</span><div><b>골수와 비장</b><small>피와 면역세포를 만드는 공장. 치료 후 만들어내는 세포의 '종류'가 달라진 채로 남을 수 있습니다.</small></div></div>
+    <div class="card"><span class="ic">🦠</span><div><b>장과 장내 미생물</b><small>장 점막이 상하고 항생제가 더해지면 미생물 구성이 바뀝니다. 이것이 전신 면역의 분위기를 좌우합니다.</small></div></div>
+    <div class="card"><span class="ic">💪</span><div><b>간·지방·근육</b><small>에너지 창고. 근육이 빠지고 대사가 흐트러지면 면역세포도 제 힘을 못 냅니다.</small></div></div>
+    <div class="card"><span class="ic">🩸</span><div><b>혈관과 응고</b><small>혈관 벽이 변하면 면역세포가 필요한 곳으로 들어가지 못할 수 있습니다.</small></div></div>
+    <div class="card"><span class="ic">🧵</span><div><b>늙은 세포와 흉터조직</b><small>치료로 '늙어버린' 세포들이 염증 물질을 계속 뿜어내고, 조직이 딱딱해집니다.</small></div></div>
+    <div class="card"><span class="ic">🧠</span><div><b>스트레스 회로</b><small>수술·통증·불면이 스트레스 호르몬을 올리고, 이것이 면역에 영향을 줍니다.</small></div></div>
+    <div class="card"><span class="ic">🧬</span><div><b>혈액세포의 유전적 변화</b><small>치료가 특정 혈액세포 집단을 선택적으로 늘릴 수 있고, 그 흔적이 오래 남습니다.</small></div></div>
+  </div>
+
+  <div class="box green">
+    <span class="tag">AI 클로드 주석</span>
+    <p>일곱 군데가 <b>모두</b> 변해야 하는 건 아닙니다. 논문은 "사람마다 어느 조합이 남는지가 다르다"고 말합니다. 그래서 이것은 모두에게 적용되는 공식이 아니라, <b>개인별로 확인해야 할 목록</b>에 가깝습니다.</p>
+  </div>
+</section>
+
+<section class="reveal">
+  <h2><span class="num">05. 핵심</span>이것만 기억하세요</h2>
+
+  <div class="box green">
+    <span class="tag">한 문장</span>
+    <h3>남은 암세포의 '양'과, 그 암세포가 놓인 '땅의 상태'는 서로 다른 문제입니다.</h3>
+    <p>지금 병원에서 재발 위험을 볼 때 쓰는 검사(영상, 혈액 속 암 DNA 등)는 대부분 <b>씨앗의 개수</b>를 셉니다. 땅의 상태는 따로 보지 않습니다.</p>
+    <p>논문은 "그래서 같은 수치를 가진 두 사람의 결과가 다른 것 아닐까"라고 묻습니다. 그리고 <b>이 두 가지를 함께 봐야 한다</b>고 제안합니다.</p>
+  </div>
+
+  <p>이것이 제가 이 논문을 소개하고 싶었던 이유입니다. 답을 준 논문이 아니라, <strong>우리가 빠뜨리고 있던 질문을 돌려준 논문</strong>이기 때문입니다.</p>
+</section>
+
+<section class="reveal">
+  <h2><span class="num">06. 질문 카드</span>주치의에게 이렇게 물어보세요</h2>
+
+  <p class="copyhint">아래 문장은 그대로 복사해서 쓰셔도 됩니다. 답을 요구하는 질문이 아니라, <b>내 상황에서 의미가 있는지 함께 생각해 달라는 질문</b>으로 만들었습니다.</p>
+
+  <div class="qcard">
+    <div class="qnum">질문 1 · 회복 상태 추적</div>
+    <p class="qtext">치료가 끝난 뒤에도 염증 수치나 혈액 수치를 정기적으로 확인해 주실 수 있을까요? 제 몸이 어느 정도 회복됐는지 알고 싶습니다.</p>
+    <p class="why">CRP, 백혈구 구성 같은 흔한 검사로도 회복 흐름을 볼 수 있습니다. 한 번이 아니라 <b>여러 번 이어서 보는 것</b>이 핵심입니다.</p>
+  </div>
+
+  <div class="qcard">
+    <div class="qnum">질문 2 · 다음 치료의 간격</div>
+    <p class="qtext">다음 치료를 시작하기 전에 몸이 회복될 시간을 두는 것이 제 경우에 도움이 될까요, 아니면 바로 이어가는 게 나을까요?</p>
+    <p class="why">논문이 제안하는 '회복 간격'은 아직 가설입니다. 암의 종류와 진행 속도에 따라 <b>기다리는 것이 더 위험할 수도</b> 있습니다. 그래서 반드시 주치의와 함께 판단할 일입니다.</p>
+  </div>
+
+  <div class="qcard">
+    <div class="qnum">질문 3 · 항생제</div>
+    <p class="qtext">꼭 필요한 경우가 아니라면 항생제 사용을 줄이는 것이 저에게 의미가 있을까요?</p>
+    <p class="why">장내 미생물과 면역치료 반응의 관계는 이 논문에서 근거가 비교적 탄탄한 부분입니다. 다만 <b>감염 치료가 우선</b>이며, 필요한 항생제를 거부하자는 뜻은 절대 아닙니다.</p>
+  </div>
+
+  <div class="qcard">
+    <div class="qnum">질문 4 · 수술 전후</div>
+    <p class="qtext">수술 전후 기간에 제가 미리 준비하거나 관리할 수 있는 것이 있을까요?</p>
+    <p class="why">논문은 수술 전후를 "짧지만 중요한 시기"로 봅니다. 통증 조절, 수면, 회복 운동처럼 이미 병원에서 하는 것들이 여기에 해당합니다.</p>
+  </div>
+
+  <div class="qcard">
+    <div class="qnum">질문 5 · 근육과 영양</div>
+    <p class="qtext">치료 중에 빠진 근육과 체중을 회복하는 것이 재발 위험과도 관련이 있을까요? 재활 프로그램을 받을 수 있나요?</p>
+    <p class="why">운동과 영양 재활은 이 논문에서 '몸을 리셋하는 전략'의 하나로 언급됩니다. <b>지나친 절식이나 극단적 식단은 회복을 방해할 수 있다</b>고도 명시되어 있습니다.</p>
+  </div>
+
+  <div class="qcard">
+    <div class="qnum">질문 6 · 내 상황에 맞는 추적</div>
+    <p class="qtext">제 암 종류와 받은 치료를 생각할 때, 특별히 더 주의 깊게 지켜봐야 할 부분이 있을까요?</p>
+    <p class="why">논문은 치료 종류마다 남는 변화가 다르다고 말합니다(항암제는 골수와 장, 방사선은 조직의 굳음, 수술은 전신 반응). <b>이 질문 하나가 앞의 다섯 개를 대신할 수도</b> 있습니다.</p>
+  </div>
+</section>
+
+<section class="reveal">
+  <h2><span class="num">07. 실천</span>오늘부터 해볼 수 있는 것</h2>
+
+  <p>논문이 실제로 언급한 것 중, 지금 스스로 할 수 있는 것만 추렸습니다.</p>
+
+  <ul class="today">
+    <li><b>걷기와 가벼운 근력 유지.</b> 논문에서 '몸을 리셋하는' 방법으로 가장 자주 나오는 것이 운동입니다.</li>
+    <li><b>잠.</b> 수면과 생체리듬이 흐트러지면 면역 회복이 늦어질 수 있다고 봅니다.</li>
+    <li><b>식이섬유가 있는 식사.</b> 장내 미생물과 관련해 근거가 있는 몇 안 되는 식이 요소입니다.</li>
+    <li><b>내 기록 남기기.</b> 혈액검사 수치, 체중, 걸음 수를 한 장에 모아두면, 다음 진료 때 '흐름'을 보여드릴 수 있습니다.</li>
+    <li><b>불필요한 약과 보충제 정리.</b> 더하는 것보다 빼는 것이 안전한 시기일 수 있습니다.</li>
+  </ul>
+</section>
+
+<section class="reveal">
+  <h2><span class="num">08. 경계선</span>여기서 멈춰야 하는 지점</h2>
+
+  <div class="box rose">
+    <span class="tag">꼭 읽어주세요</span>
+    <h3>"늙은 세포를 없애는 것"을 스스로 시도하지는 마세요</h3>
+    <p>논문에는 치료로 생긴 늙은 세포(노화세포, senescent cell)를 제거하는 약(세놀리틱, senolytic)이 여러 번 나옵니다. 우리 커뮤니티에서도 비슷한 이름의 성분들이 이야기되곤 합니다.</p>
+    <p>그런데 같은 논문이 이렇게도 말합니다. <b>늙은 세포는 상처를 아물게 하는 데 필요하고, 너무 일찍 없애면 오히려 해로울 수 있으며, 언제 어떤 사람에게 해야 하는지는 아직 정해지지 않았다</b>고요. 실제로 쓰인 사례도 아직은 동물실험과 초기 연구 단계입니다.</p>
+    <p>그래서 이 논문은 "지금 당장 뭔가를 복용하라"는 근거가 아니라, <b>"타이밍과 측정 없이 하면 안 된다"는 근거</b>로 읽는 것이 맞습니다. 관심이 가신다면, 혼자 시작하기보다 주치의와 먼저 이야기해 주세요.</p>
+  </div>
+
+  <div class="box amber">
+    <span class="tag">잊지 마세요</span>
+    <p>이 논문은 <b>가설을 제안한 글</b>입니다. 저자들 스스로 "이것은 검증된 진료 지침이 아니라 앞으로 시험해봐야 할 틀"이라고 여러 번 적었습니다. 지금 당장 치료 방식을 바꿀 근거는 되지 못합니다.</p>
+    <p><b>복용·병용·중단의 최종 결정은 반드시 주치의의 몫입니다.</b> 이런 글과 AI는 결정을 대신해 주는 도구가 아니라, 진료실에서 <b>더 나은 질문</b>을 할 수 있게 돕는 도구입니다.</p>
+  </div>
+</section>
+
+<div class="closing">
+  좋은 답을 얻는 가장 빠른 길은<br>
+  좋은 질문을 들고 가는 것입니다.<br><br>
+  이 논문이 우리에게 준 것은 답이 아니라,<br>
+  <b>우리가 빠뜨리고 있던 질문</b>이었습니다.
+</div>
+
+<footer>
+  <p><b>원문</b><br>
+  Xue J, Zhang L, Ning C, et al. <i>Persistent post-treatment host immune remodeling in cancer: linking therapy to minimal residual disease, relapse, and treatment rechallenge.</i> Frontiers in Immunology. 2026;17:1992385.<br>
+  <a href="https://doi.org/10.3389/fimmu.2026.1992385">doi.org/10.3389/fimmu.2026.1992385</a> (오픈액세스, 누구나 무료로 전문을 읽을 수 있습니다)</p>
+  <p>이 글은 위 논문을 환자·보호자를 위해 쉽게 풀어 쓴 소개글이며, 의학적 조언이 아닙니다. 그림은 원문 그림을 복제하지 않고 새로 그렸습니다.<br>
+  더 자세한 방법론과 근거 등급이 궁금하신 분은 함께 올린 <b>심화판</b>을 봐주세요.</p>
+  <p>히포크라테스의 친구들 · 2026년 11월 12일 · 정리 꿈많은사람2</p>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) {
+    for (var i=0;i<els.length;i++){ els[i].classList.add('on'); }
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); }
+    });
+  }, {rootMargin:'0px 0px -8% 0px', threshold:0.05});
+  for (var j=0;j<els.length;j++){ io.observe(els[j]); }
+  // safety fallback
+  setTimeout(function(){
+    for (var k=0;k<els.length;k++){ els[k].classList.add('on'); }
+  }, 4000);
+})();
+</script>
+</body>
+</html>
